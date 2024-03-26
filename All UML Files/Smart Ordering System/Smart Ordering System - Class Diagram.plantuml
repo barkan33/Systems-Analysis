@@ -6,7 +6,7 @@ class User {
     + logout()
 }
 
-class Customer extends User {
+class Customer {
     + browseMenu()
     + selectTable()
     + orderFood()
@@ -34,7 +34,7 @@ class Admin extends User {
 }
 
 class Menu {
-    - dishes : Dish[]
+    - dishes : List<Dish>
     + getDishDetails(dishId) : Dish
 }
 
@@ -47,7 +47,7 @@ class Dish {
 
 class Order {
     - customer : Customer
-    - dishes : Dish[]
+    - dishes : List<Dish>
     - table : Table
     - status
     + addDish(dish)

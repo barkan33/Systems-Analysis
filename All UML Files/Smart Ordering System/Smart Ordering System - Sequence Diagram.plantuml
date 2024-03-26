@@ -1,0 +1,54 @@
+@startuml Smart Ordering System
+actor Customer
+actor Staff
+participant "Customer App" as CustomerApp
+participant Menu
+participant Order
+participant "Payment Services" as PaymentServices
+
+group Happy Path
+    Customer -> CustomerApp: נכנס למסעדה
+    activate Customer
+    activate CustomerApp
+    CustomerApp -> Customer: הצגת שולחנות פנוים
+    Customer -> CustomerApp: בחירת שולחן
+    deactivate Customer
+    CustomerApp -> Menu: בקשת תפריט
+    activate Menu
+    Menu --> CustomerApp: שליחת תפריט
+    deactivate Menu
+    CustomerApp -> Customer: בחירת מנה
+    activate Customer
+    Customer -> CustomerApp: מעבר לתשלום
+    deactivate Customer
+    CustomerApp -> PaymentServices: אישור לביצוע תשלום
+    activate PaymentServices
+    PaymentServices --> CustomerApp: אישור תשלום
+    deactivate PaymentServices
+    CustomerApp -> Staff: הקמת הזמנה
+    deactivate CustomerApp
+    activate Staff
+    Staff -> Order: הכנת הזמנה
+    Order --> Staff: התראה הזמנה מוכנה
+    deactivate Staff
+    Staff -> Customer: הגשת הזמנה
+    deactivate Staff
+end
+
+group Dish Not Available
+    Customer -> CustomerApp: נכנס למסעדה
+    activate Customer
+    activate CustomerApp
+    CustomerApp -> Customer: הזגת שולחנות פנוים
+    Customer -> CustomerApp:  בחירת שולחן
+    deactivate Customer
+    CustomerApp -> Menu: בקשת תפריט
+    activate Menu
+    Menu --> CustomerApp: שליחת תפריט
+    deactivate Menu
+    CustomerApp -> Customer:  בחירת מנה
+    Customer --> CustomerApp: המנה אינה זמינה, אנא בחר מנה אחרת
+    deactivate CustomerApp
+end
+
+@enduml

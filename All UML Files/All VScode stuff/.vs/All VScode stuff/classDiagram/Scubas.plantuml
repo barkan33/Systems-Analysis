@@ -1,0 +1,132 @@
+@startuml kokox
+' הגדרת המחלקות והסבר על כל אחת
+
+' מחלקת צולל
+class Diver {
+    +diverNumber : String ' מספר צולל ייחודי
+    +firstName : String ' שם פרטי
+    +lastName : String ' שם משפחה
+    +dateOfBirth : Date ' תאריך לידה
+    +email : String ' כתובת אימייל
+    +password : String ' סיסמה
+    +log : DiveLog ' יומן צלילות
+    +equipment : List<EquipmentItem> ' רשימת ציוד
+    +ranks : List<Rank> ' רשימת דרגות
+    +signDive(DiverName : string) ' חתימה על צלילה
+    +addEquipmentItem(item : EquipmentItem) ' הוספת פריט ציוד
+    +addRank(rank : Rank) ' הוספת דרגה
+}
+
+' מחלקת יומן צלילות
+class DiveLog {
+    +dives : List<Dive> ' רשימת צלילות
+    +addDive(dive : Dive) ' הוספת צלילה
+    +uploadLogImage(image : File) ' העלאת תמונת יומן
+}
+
+' מחלקת צלילה
+class Dive {
+    +diveSite : DiveSite ' אתר הצלילה
+    +date : Date ' תאריך
+    +entryTime : Time ' שעת כניסה למים
+    +exitTime : Time ' שעת יציאה מהמים
+    +waterTemperature : Float ' טמפרטורת המים
+    +waterCondition : String ' מצב המים
+    +participants : List<Diver> ' משתתפים
+    +instructor : DivingInstructor ' מדריך הצלילה
+    +clubSignature : Signature ' חתימת המועדון
+    +signatures : List<Signature> ' חתימות המשתתפים
+    +addParticipant(diver : Diver) ' הוספת משתתף
+    +addSignature(signature : Signature) ' הוספת חתימה
+}
+
+' מחלקת אתר צלילה
+class DiveSite {
+    +name : String ' שם
+    +address : String ' כתובת
+    +description : String ' תיאור
+    +perimeter : Float ' היקף
+    +depth : Float ' עומק
+    +waterType : String ' סוג המים
+}
+
+' מחלקת מדריך צלילה
+class DivingInstructor extends Diver {
+    +employmentRecords : List<EmploymentRecord> ' רשימת מקומות עבודה
+    +documentDive(dive : Dive) ' תיעוד צלילה
+}
+
+' מחלקת רישום עבודה
+class EmploymentRecord {
+    +club : DivingClub ' המועדון
+    +startDate : Date ' תאריך התחלה
+    +endDate : Date ' תאריך סיום
+}
+
+' מחלקת מועדון צלילה
+class DivingClub {
+    +name : String ' שם
+    +licenseNumber : String ' מספר רישיון
+    +contactPerson : String ' איש קשר
+    +address : String ' כתובת
+    +country : Country ' מדינה
+    +phone : String ' טלפון
+    +email : String ' אימייל
+    +website : String ' אתר אינטרנט
+    +divingInstructors : List<DivingInstructor> ' מדריכי הצלילה
+    -diveSite : List<DiveSite>
+    '+saveDive(dive : Dive) ' שמירת צלילה
+}
+
+' מחלקת מדינה
+class Country {
+    +name : String ' שם
+    +divingRegulationLink : String ' קישור לתקנות צלילה
+}
+
+' מחלקת פריט ציוד
+class EquipmentItem {
+    +name : String ' שם
+    +quantity : Integer ' כמות
+    +note : String ' הערה
+}
+
+' מחלקת חתימה
+class Signature {
+    +signer : String ' החותם
+    +timestamp : DateTime ' חותמת זמן
+}
+
+' מחלקת דרגה
+class Rank {
+    +description : String ' תיאור
+    +requiredDives : Integer ' צלילות נדרשות
+    +dateReceived : Date ' תאריך קבלה
+    +issuingClub : DivingClub ' המועדון המוציא
+    +certificateImage : File ' תמונת התעודה
+}
+
+
+Dive *-- DiveSite
+Dive *- Diver
+Dive *- DivingInstructor
+Dive *- Signature
+
+DivingInstructor *-- EmploymentRecord
+
+EmploymentRecord *-- DivingClub
+
+Rank *- DivingClub
+
+Diver *- DiveLog
+Diver *- EquipmentItem
+Diver *- Rank
+
+DiveLog *-- Dive
+
+DivingClub *-- Country
+DivingClub *-- DivingInstructor
+DivingClub *- DiveSite
+
+
+@enduml

@@ -1,0 +1,51 @@
+' @startuml Diving Sequence Diagram - Part 1
+
+' actor Diver
+' actor DiveClub
+' actor DivingInstructor
+
+' Diver -> DiveClub: Manage Profile
+' activate DiveClub
+' Diver <-- DiveClub: Profile managed
+
+' Diver -> DiveClub: Log Dives
+' Diver <-- DiveClub: Dives logged
+
+' Diver -> DiveClub: View Log Dives
+' Diver <-- DiveClub: Log dives displayed
+
+' Diver -> DiveClub: Borrowing Equipment
+' Diver <-- DiveClub: Equipment borrowed
+
+' Diver -> DiveClub: Request Rank
+' Diver <-- DiveClub: Rank requested
+
+' Diver -> DiveClub: Locate DiveClub
+' Diver <-- DiveClub: DiveClub located
+
+' @enduml
+
+@startuml
+actor Diver
+participant DiveManagementSystem
+participant UserDatabase
+rectangle{
+
+    Diver->>DiveManagementSystem: Register
+    activate DiveManagementSystem
+    DiveManagementSystem->>Diver: Enter registration details
+    Diver->>DiveManagementSystem: Registration details
+    DiveManagementSystem->>UserDatabase: Store diver information
+    deactivate DiveManagementSystem
+    DiveManagementSystem->>Diver: Registration successful
+}
+
+actor Diver
+participant DiveManagementSystem
+Diver->>DiveManagementSystem: Log Dive
+activate DiveManagementSystem
+DiveManagementSystem->>Diver: Enter dive details
+Diver->>DiveManagementSystem: Dive details
+deactivate DiveManagementSystem
+DiveManagementSystem->>Diver: Dive logged successfully
+@enduml

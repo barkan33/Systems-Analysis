@@ -1,0 +1,32 @@
+
+@startuml Diving Use Case
+
+actor Diver
+actor DiveClub
+actor DivingInstructor
+actor newUser
+left to right direction
+
+
+newUser -- (Registration)
+(Registration) -- Diver
+Diver -- (Manage Profile)
+Diver -- (Log Dives)
+Diver -- (View Log Dives)
+Diver -- (Borrowing Equipment)
+Diver -- (Request Rank)
+Diver -- (Locate DiveClub)
+(View Log Dives) -- (Log Dives): Extends
+
+
+
+DivingInstructor -- (Confirm Dives)
+DivingInstructor -- (Signature For Dive)
+DivingInstructor -|> Diver
+
+DiveClub -- (Manage Dive Sites)
+DiveClub -- (Manage Diving Instructors)
+DiveClub -- (Manage Dive History)
+DiveClub -- (Issuing For Rank)
+
+@enduml

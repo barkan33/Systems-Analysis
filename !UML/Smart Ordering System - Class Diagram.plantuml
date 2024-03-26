@@ -1,0 +1,70 @@
+@startuml
+class User {
+    - username
+    - password
+    + login()
+    + logout()
+}
+
+class Customer extends User {
+    + browseMenu()
+    + selectTable()
+    + orderFood()
+    + pay()
+}
+
+class Staff extends User {
+    + viewOrders()
+    + manageOrders()
+}
+
+class Waiter extends Staff {
+    + receiveNotifications()
+}
+
+class Chef extends Staff {
+    + prepareFood()
+    + updateOrderStatus()
+}
+
+class Admin extends User {
+    + configureSystem()
+    + manageUsers()
+    + generateReports()
+}
+
+class Menu {
+    - dishes : Dish[]
+    + getDishDetails(dishId) : Dish
+}
+
+class Dish {
+    - id
+    - name
+    - description
+    - price
+}
+
+class Order {
+    - customer : Customer
+    - dishes : Dish[]
+    - table : Table
+    - status
+    + addDish(dish)
+    + removeDish(dish)
+    + updateStatus(status)
+}
+
+class Table {
+    - id
+    - capacity
+    - status
+}
+
+
+
+Order *-- Customer
+Order *-- Dish
+Order *-- Table
+Menu *-- Dish
+@enduml

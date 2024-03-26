@@ -1,0 +1,32 @@
+@startuml
+actor Diver
+actor DiveClub
+actor DiveInstructor
+
+
+
+Diver <-> (Manage Profile)
+Diver <-> (Log Dives)
+Diver <-> (View Dive History)
+Diver <-> (Manage Equipment)
+Diver <-> (Certify Dives)
+
+DiveClub <-> (Manage Dive Sites)
+DiveClub <-> (Manage Instructors)
+DiveClub <-> (View Dive Logs)
+
+DiveInstructor <-> (Manage Dives)
+DiveInstructor <-> (Confirm Dives)
+
+(Manage Profile) <-> (User Database)
+(Log Dives) <-> (Dive Log Database)
+(View Dive History) <-> (Dive Log Database)
+(Manage Equipment) <-> (Equipment Database)
+(Certify Dives) <-> (Certification Database)
+(Manage Dive Sites) <-> (Dive Site Database)
+(Manage Instructors) <-> (Instructor Database)
+(View Dive Logs) <-> (Dive Log Database)
+(Manage Dives) <-> (Dive Database)
+(Confirm Dives) <-> (Dive Database)
+
+@enduml

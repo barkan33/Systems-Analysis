@@ -1,0 +1,61 @@
+@startuml ScubasPart2
+
+actor Diver as d
+actor DivingInstructor as di
+participant DiveClub as dc
+participant DiveLog as dl
+participant Dive
+database DivingClubs as dcDB
+database DivingEquipment
+
+group Set up a dive
+d -> Dive: Sign up for a dive
+activate d
+    activate Dive
+    Dive -> dcDB: Request dive sites
+    activate dcDB
+    dcDB --> Dive: Provide dive sites
+    deactivate dcDB
+    Dive --> d: Display dive sites
+    deactivate Dive
+
+    deactivate d
+    d -> di: Request a dive instructor
+    activate di
+    activate d
+    di --> d: Assign dive instructor
+    deactivate d
+    di -> Dive: Provide dive details & list of divers
+    deactivate di
+
+    d -> Dive: Request equipment list
+    activate d
+    activate Dive
+    Dive -> DivingEquipment: Request equipment list
+    activate DivingEquipment
+    DivingEquipment --> Dive: Provide equipment list
+    deactivate DivingEquipment
+    Dive --> d: Display equipment list
+    d -> Dive: Select equipment
+    deactivate Dive
+    deactivate d
+end
+
+group Finish dive
+    d -> Dive: Provide signature
+    activate Dive
+    activate d
+    di -> Dive: Provide signature
+    deactivate d
+    activate di
+    dc -> Dive: Provide signature
+    deactivate di
+    activate dc
+    Dive --> dl: Save dive data
+    activate dl
+    deactivate dl
+    deactivate dc
+    deactivate Dive
+end
+
+@enduml

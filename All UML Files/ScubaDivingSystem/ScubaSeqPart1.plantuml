@@ -1,0 +1,34 @@
+@startuml Diving Sequence Diagram
+
+actor Diver as d
+actor DivingInstructore as di
+database RegisteredDivers as rd
+database DiveSites as ds
+database DivingClubs as dcDB
+
+group Registration Diver and instructor
+'locating a club nearby a dive site
+d -> dcDB: Locate Dive Club
+activate d
+activate dcDB
+dcDB --> d: Dive club location 
+deactivate dcDB
+deactivate d
+
+'registering as a diver in that club
+d -> rd: Register as a Diver
+activate rd
+activate d
+rd --> d: Registration successful
+deactivate rd
+deactivate d
+
+'diving instructor registration to a club (can be in multiple clubs)
+di --> dcDB: Register as a Diving Instructor
+activate di
+activate dcDB
+dcDB --> di: Registration successful
+deactivate di
+deactivate dcDB
+end
+@enduml

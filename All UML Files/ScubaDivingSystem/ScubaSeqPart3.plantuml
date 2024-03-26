@@ -1,0 +1,19 @@
+@startuml ScubasPart3
+
+actor Diver as d
+participant DiveClub as dc
+participant DiveLog
+database RegisteredDivers
+
+
+ group Get Certificate
+    d --> dc: Request to get certificate
+    dc --> DiveLog: Check if diver is qualified
+    DiveLog --> dc: Return if qualified
+    alt Not qualified
+    dc --> d: Diver is not qualified by clubs standards
+    else Qualified
+    dc --> RegisteredDivers: Assign certificate
+    RegisteredDivers --> d: Certificate assigned
+end
+@enduml

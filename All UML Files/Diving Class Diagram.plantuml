@@ -1,0 +1,121 @@
+@startuml Diving Class Diagram
+
+class Diver {
+    #diverNumber : String
+    #firstName : String
+    #lastName : String
+    #dateOfBirth : Date
+    #email : String
+    #password : String
+    #log : DiveLog
+    #equipment : List<EquipmentItem>
+    #ranks : List<Rank>
+    +signDive(DiverName : string)
+    +addEquipmentItem(item : EquipmentItem)
+    +addRank(rank : Rank)
+}
+
+class DiveLog {
+    -dives : List<Dive>
+    +addDive(dive : Dive)
+    +uploadLogImage(image : File)
+}
+
+class Dive {
+    -diveSite : DiveSite
+    -date : Date
+    -entryTime : Time
+    -exitTime : Time
+    -waterTemperature : Float
+    -waterCondition : String
+    -participants : List<Diver
+    -instructor : DivingInstructor
+    -clubSignature : Signature
+    +signatures : List<Signature>
+    +addParticipant(diver : Diver)
+    +addSignature(signature : Signature)
+}
+
+class DiveSite {
+    -name : String
+    -address : String
+    -description : String
+    -perimeter : Float
+    -depth : Float
+    -waterType : String
+}
+
+class DivingInstructor extends Diver {
+    -employmentRecords : List<EmploymentRecord>
+    +documentDive(dive : Dive) 
+}
+
+class EmploymentRecord {
+    -club : DivingClub
+    -startDate : Date
+    -endDate : Date
+}
+
+class DivingClub {
+    -name : String
+    -licenseNumber : String
+    -contactPerson : String
+    -address : String
+    -country : Country
+    -phone : String
+    -email : String
+    -website : String
+    -divingInstructors : List<DivingInstructor>
+    -diveSite : List<DiveSite>
+    -log : List<DiveLog>
+    +saveDive(dive : Dive)
+}
+
+class Country {
+    +name : String
+    +divingRegulationLink : String
+}
+
+class EquipmentItem {
+    +name : String
+    +quantity : Integer
+    +note : String
+
+}
+class Signature {
+    +signer : String
+    +timestamp : DateTime
+}
+
+class Rank {
+    +description : String
+    +requiredDives : Integer
+    +dateReceived : Date
+    +issuingClub : DivingClub
+    +certificateImage : File
+}
+
+
+Dive *-- DiveSite
+Dive *- Diver
+Dive *- DivingInstructor
+Dive *- Signature
+
+DivingInstructor *-- EmploymentRecord
+
+EmploymentRecord *-- DivingClub
+
+Rank *- DivingClub
+
+Diver *- DiveLog
+Diver *- EquipmentItem
+Diver *- Rank
+
+DiveLog *-- Dive
+
+DivingClub *-- Country
+DivingClub *-- DivingInstructor
+DivingClub *- DiveSite
+
+
+@enduml

@@ -15,11 +15,11 @@ class Diver {
     +addRank(rank : Rank)
 }
 
-class DiveLog {
-    -dives : List<Dive>
-    +addDive(dive : Dive)
-    +uploadLogImage(image : File)
-}
+' class DiveLog {
+'     -dives : List<Dive>
+'     +addDive(dive : Dive)
+'     +uploadLogImage(image : File)
+' }
 
 class Dive {
     -diveSite : DiveSite
@@ -28,7 +28,7 @@ class Dive {
     -exitTime : Time
     -waterTemperature : Float
     -waterCondition : String
-    -participants : List<Diver
+    -participants : List<Diver>
     -instructor : DivingInstructor
     -clubSignature : Signature
     +signatures : List<Signature>
@@ -47,7 +47,7 @@ class DiveSite {
 
 class DivingInstructor extends Diver {
     -employmentRecords : List<EmploymentRecord>
-    +documentDive(dive : Dive) 
+    +documentDive(dive : Dive)
 }
 
 class EmploymentRecord {
@@ -73,7 +73,7 @@ class DivingClub {
 
 class Country {
     +name : String
-    +divingRegulationLink : String
+    +divingRegulation : String
 }
 
 class EquipmentItem {

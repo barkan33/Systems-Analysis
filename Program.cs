@@ -39,7 +39,7 @@ namespace Systems_Analysis
                 diveClub = correntDivingClub.ToString();
             }
 
-            Console.WriteLine($"User: {fName} {lName}            Dive Club: {diveClub}            Dive-Partners: {divePartners}");
+            Console.WriteLine($"User: {fName} {lName}            Dive Club: {diveClub}            Dive-Partners: {divePartners.Count}");
         }
         static void MainMenu()
         {

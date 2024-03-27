@@ -9,16 +9,17 @@ namespace Systems_Analysis
 
     public class Diver
     {
+        //properties for JSON file
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Id { get; private set; }
         public DateTime DateOfBirth { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
+        public List<Dive> DiveLog { get; private set; }
+        public List<EquipmentItem> Equipment { get; private set; }
+        public List<Rank> Ranks { get; private set; }
 
-        private List<Dive> diveLog;
-        private List<EquipmentItem> equipment;
-        private List<Rank> ranks;
         public Diver(string firstName, string lastName, string id, DateTime dateOfBirth, string password, string email)
         {
             SetFirstName(firstName);
@@ -27,9 +28,9 @@ namespace Systems_Analysis
             SetDateOfBirth(dateOfBirth);
             SetPassword(password);
             SetEmail(email);
-            diveLog = new List<Dive>();
-            equipment = new List<EquipmentItem>();
-            ranks = new List<Rank>();
+            DiveLog = new List<Dive>();
+            Equipment = new List<EquipmentItem>();
+            Ranks = new List<Rank>();
         }
 
         private void SetFirstName(string firstName) { FirstName = firstName; }
@@ -46,17 +47,17 @@ namespace Systems_Analysis
         public string GetEmail() { return Email; }
 
 
-        public List<Dive> AddDiveToLog() { return diveLog; }
-        public void AddDiveToLog(Dive dive) { diveLog.Add(dive); }
+        public List<Dive> AddDiveToLog() { return DiveLog; }
+        public void AddDiveToLog(Dive dive) { DiveLog.Add(dive); }
 
-        public List<EquipmentItem> GetEquipment() { return equipment; }
-        public void SetEquipment(List<EquipmentItem> equipment) { this.equipment = equipment; }
+        public List<EquipmentItem> GetEquipment() { return Equipment; }
+        public void SetEquipment(List<EquipmentItem> equipment) { Equipment = equipment; }
 
-        public List<Rank> GetRanks() { return ranks; }
-        public void SetRanks(List<Rank> ranks) { this.ranks = ranks; }
+        public List<Rank> GetRanks() { return Ranks; }
+        public void SetRanks(List<Rank> ranks) { Ranks = ranks; }
 
         public void SignDive(string diverName) { /* Implementation */ }
-        public void AddEquipmentItem(EquipmentItem item) { equipment.Add(item); }
-        public void AddRank(Rank rank) { ranks.Add(rank); }
+        public void AddEquipmentItem(EquipmentItem item) { Equipment.Add(item); }
+        public void AddRank(Rank rank) { Ranks.Add(rank); }
     }
 }

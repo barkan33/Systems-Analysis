@@ -2,50 +2,53 @@
 {
     public class Dive
     {
-        private DiveSite diveSite;
-        private DateOnly date;
-        private TimeOnly entryTime;
-        private TimeOnly exitTime;
-        private double waterTemperature;
-        private string waterCondition;
-        private List<Diver> participants;
-        private DivingInstructor instructor;
-        private Signature clubSignature;
-        private List<Signature> signatures;
+        //properties for JSON file
+        public DiveSite DiveSite { get; private set; }
+        public DateOnly Date { get; private set; }
+        public TimeOnly EntryTime { get; private set; }
+        public TimeOnly ExitTime { get; private set; }
+        public double WaterTemperature { get; private set; }
+        public string WaterCondition { get; private set; }
+        public List<Diver> Participants { get; private set; }
+        public DivingInstructor Instructor { get; private set; }
+        public Signature ClubSignature { get; private set; }
+        public List<Signature> Signatures { get; private set; }
 
         public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, DivingInstructor instructor, Signature clubSignature)
         {
-            this.diveSite = diveSite;
-            this.date = date;
-            this.entryTime = entryTime;
-            this.exitTime = exitTime;
-            this.waterTemperature = waterTemperature;
-            this.waterCondition = waterCondition;
-            this.instructor = instructor;
-            this.clubSignature = clubSignature;
-            participants = new List<Diver>();
-            signatures = new List<Signature>();
+            DiveSite = diveSite;
+            Date = date;
+            EntryTime = entryTime;
+            ExitTime = exitTime;
+            WaterTemperature = waterTemperature;
+            WaterCondition = waterCondition;
+            Instructor = instructor;
+            ClubSignature = clubSignature;
+            Participants = new List<Diver>();
+            Signatures = new List<Signature>();
         }
         public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<Diver> divers, DivingInstructor instructor, Signature clubSignature)
         {
-            this.diveSite = diveSite;
-            this.date = date;
-            this.entryTime = entryTime;
-            this.exitTime = exitTime;
-            this.waterTemperature = waterTemperature;
-            this.waterCondition = waterCondition;
-            this.instructor = instructor;
-            this.clubSignature = clubSignature;
-            participants = divers;
-            signatures = new List<Signature>();
+            DiveSite = diveSite;
+            Date = date;
+            EntryTime = entryTime;
+            ExitTime = exitTime;
+            WaterTemperature = waterTemperature;
+            WaterCondition = waterCondition;
+            Instructor = instructor;
+            ClubSignature = clubSignature;
+            Participants = divers;
+            Signatures = new List<Signature>();
         }
+
+
         public void addParticipant(Diver diver)
         {
-            participants.Add(diver);
+            Participants.Add(diver);
         }
         public void addSignature(Signature signature)
         {
-            signatures.Add(signature);
+            Signatures.Add(signature);
         }
     }
 }

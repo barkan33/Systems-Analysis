@@ -8,9 +8,11 @@ namespace Systems_Analysis
 {
     public class EquipmentItem
     {
-        private string name;
-        private int quantity;
-        private string note;
+        //properties for JSON 
+        public string Name { get; private set; }
+        public int Quantity { get; private set; }
+        public string Note { get; private set; }
+
         public EquipmentItem(string name, int quantity, string note)
         {
             SetName(name);
@@ -19,32 +21,32 @@ namespace Systems_Analysis
         }
         public string GetName()
         {
-            return name;
+            return Name;
         }
 
         public void SetName(string name)
         {
-            this.name = name;
+            Name = name;
         }
 
         public int GetQuantity()
         {
-            return quantity;
+            return Quantity;
         }
 
         public void SetQuantity(int quantity)
         {
-            this.quantity = quantity;
+            Quantity = quantity;
         }
 
         public string GetNote()
         {
-            return note;
+            return Note;
         }
 
         public void SetNote(string note)
         {
-            this.note = note;
+            Note = note;
         }
     }
 }

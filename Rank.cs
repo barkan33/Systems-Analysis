@@ -8,61 +8,61 @@ namespace Systems_Analysis
 {
     public class Rank
     {
-        private string description;
-        private int requiredDives;
-        private DateTime dateReceived;
-        private DivingClub issuingClub;
-        private string certificateImage;
-
+        //properties for JSON file
+        public string Description { get; private set; }
+        public int RequiredDives { get; private set; }
+        public DateTime DateReceived { get; private set; }
+        public DivingClub IssuingClub { get; private set; }
+        public string CertificateImage { get; private set; }
 
         public string GetDescription()
         {
-            return description;
+            return Description;
         }
 
         public void SetDescription(string description)
         {
-            this.description = description;
+            Description = description;
         }
 
         public int GetRequiredDives()
         {
-            return requiredDives;
+            return RequiredDives;
         }
 
         public void SetRequiredDives(int requiredDives)
         {
-            this.requiredDives = requiredDives;
+            RequiredDives = requiredDives;
         }
 
         public DateTime GetDateReceived()
         {
-            return dateReceived;
+            return DateReceived;
         }
 
         public void SetDateReceived(DateTime dateReceived)
         {
-            this.dateReceived = dateReceived;
+            DateReceived = dateReceived;
         }
 
         public DivingClub GetIssuingClub()
         {
-            return issuingClub;
+            return IssuingClub;
         }
 
         public void SetIssuingClub(DivingClub issuingClub)
         {
-            this.issuingClub = issuingClub;
+            IssuingClub = issuingClub;
         }
 
         public string GetCertificateImage()
         {
-            return certificateImage;
+            return CertificateImage;
         }
 
         public void SetCertificateImage(string certificateImage)
         {
-            this.certificateImage = certificateImage;
+            CertificateImage = certificateImage;
         }
     }
 }

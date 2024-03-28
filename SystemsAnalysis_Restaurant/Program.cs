@@ -54,7 +54,7 @@ namespace SystemsAnalysis_Restaurant
                         break;
                     }
                     selectedTable = tables.Find(table => table.GetTableNumber() == selectedTableNumber);
-                    if (selectedTable == null || selectedTable.GetIsOccupied())
+                    if (selectedTable == null || selectedTable.IsOccupied())
                     {
                         Console.WriteLine("Invalid table selection. Please try again.");
                     }
@@ -91,7 +91,7 @@ namespace SystemsAnalysis_Restaurant
             {
                 Console.WriteLine("Invalid Profession selection. Please try again.");
             }
-            int choise = 0;
+            int choice = 0;
             switch (selectedProfession)
             {
                 case 0:
@@ -102,26 +102,55 @@ namespace SystemsAnalysis_Restaurant
                     if (!Admin.Login(user, pass))
                         return;
                     Console.WriteLine("Admin Menu:\r\n1. Update Menu\r\n2. Exit");
-                    while (!int.TryParse(Console.ReadLine(), out choise))
+                    while (!int.TryParse(Console.ReadLine(), out choice))
                     {
                         Console.WriteLine("Admin Menu:\r\n1. Update Menu\r\n2. Exit");
                     }
-                    switch (choise)
+                    switch (choice)
                     {
                         case 1:
-
                             Admin.UpdateMenu(Customer.menu);
                             break;
+                        case 2:
                         default:
                             break;
                     }
                     break;
                 case 1:
-                    Console.WriteLine("Chef Menu:\r\n1. View Orders and Status\r\n2. Prepare Food and Update Status\r\n3. Exit");
+                    Console.WriteLine("Chef Menu:\r\n1. View Orders and Prepare Food\r\n2. Exit");
+                    while (!int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        Console.WriteLine("Chef Menu:\r\n1. View Orders and Prepare Food\r\n2. Exit");
+                    }
+                    switch (choice)
+                    {
+                        case 1:
+                            Chef.ViewOrders(Customer.orders);
+                            break;
+                        case 2:
+                        default:
+                            break;
+                    }
+
                     break;
                 case 2:
                     Console.WriteLine("Waiter Menu:\r\n1. View Orders and Status\r\n2. Serve Ready Orders\r\n3. Exit");
-
+                    while (!int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        Console.WriteLine("Waiter Menu:\r\n1. View Orders and Status\r\n2. CleanTable\r\n3. Exit");
+                    }
+                    switch (choice)
+                    {
+                        case 1:
+                            Waiter.ViewOrders(Customer.orders);
+                            break;
+                        case 2:
+                            Waiter.CleanTable(Customer.orders);
+                            break;
+                        case 3:
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     Main();

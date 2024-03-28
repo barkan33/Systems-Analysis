@@ -8,9 +8,18 @@ namespace SystemsAnalysis_Restaurant
 {
     public class Waiter : Staff
     {
-        public static void CleanTable(Table table)
+        public static void CleanTable(List<Order> orders)
         {
-            table.SetIsOccupied(false);
+            //Print Orders
+            //choice table
+            //TODO
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                //choice table
+            }
+            orders[choice].GetTable().SetIsOccupied(false);
+
         }
     }
 }

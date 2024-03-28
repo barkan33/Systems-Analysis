@@ -29,7 +29,7 @@ namespace SystemsAnalysis_Restaurant
             return numberOfSeats;
         }
 
-        public bool GetIsOccupied()
+        public bool IsOccupied()
         {
             return isOccupied;
         }

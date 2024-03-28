@@ -9,11 +9,11 @@ namespace SystemsAnalysis_Restaurant
     public class Chef : Staff
     {
 
-        public void PrepareFood(Order order)
+        public static void PrepareFood(Order order)
         {
             order.SetStatus(Order.OrderStatus.Preparing);
         }
-        public void UpdateOrderStatus(Order order)
+        public static void UpdateOrderStatus(Order order)
         {
             order.SetStatus(Order.OrderStatus.Ready);
         }

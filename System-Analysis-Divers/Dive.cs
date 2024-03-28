@@ -14,6 +14,7 @@
         public Signature ClubSignature { get; private set; }
         public List<Signature> Signatures { get; private set; }
 
+        //builder recieving all except participants(creating new empty list) and signatures(creating new empty list)
         public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, DivingInstructor instructor, Signature clubSignature)
         {
             DiveSite = diveSite;
@@ -27,6 +28,7 @@
             Participants = new List<Diver>();
             Signatures = new List<Signature>();
         }
+        //builder recieving all except signatures(creating new empty list)
         public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<Diver> divers, DivingInstructor instructor, Signature clubSignature)
         {
             DiveSite = diveSite;
@@ -42,11 +44,11 @@
         }
 
 
-        public void addParticipant(Diver diver)
+        public void AddParticipant(Diver diver)
         {
             Participants.Add(diver);
         }
-        public void addSignature(Signature signature)
+        public void AddSignature(Signature signature)
         {
             Signatures.Add(signature);
         }

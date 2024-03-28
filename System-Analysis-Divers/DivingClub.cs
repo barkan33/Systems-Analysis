@@ -65,7 +65,22 @@ namespace Systems_Analysis
             diveLog = new List<Dive>();
         }
 
-
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("**************************************************");
+            sb.AppendLine($"*                    {name}                      *");
+            sb.AppendLine("**************************************************");
+            sb.AppendLine($"License Number: {licenseNumber}");
+            sb.AppendLine($"Contact Person: {contactPerson}");
+            sb.AppendLine($"Address: {address}");
+            sb.AppendLine($"Country: {country.GetName()}");
+            sb.AppendLine($"Phone: {phone}");
+            sb.AppendLine($"Email: {email}");
+            sb.AppendLine($"Website: {website}");
+            sb.AppendLine("**************************************************");
+            return sb.ToString();
+        }
 
     }
 }

@@ -34,5 +34,17 @@ namespace Systems_Analysis
         {
             this.divingRegulation = divingRegulation;
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Country Information");
+            sb.Append("Country: ");
+            sb.AppendLine(name);
+            sb.Append("Diving Regulation: ");
+            sb.AppendLine(divingRegulation);
+            sb.Append('*',20 );
+            return sb.ToString();
+        }
     }
 }

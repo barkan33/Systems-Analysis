@@ -9,12 +9,52 @@ namespace Systems_Analysis
 {
     internal class Program
     {
+        //all countries and there regulations
+        static Dictionary<string, string> regulations = new Dictionary<string, string>
+            {
+                { "Australia", "No solo diving allowed. All dives must be supervised by a certified diving instructor." },
+                { "Brazil", "All dives must be logged in a dive logbook. Proof of dive experience required for deep dives and wreck dives." },
+                { "Canada", "Divers must complete a medical questionnaire before each dive. No diving allowed without proper medical clearance." },
+                { "France", "Divers must carry a surface marker buoy (SMB) during all dives. Night diving prohibited without prior authorization." },
+                { "Italy", "Divers must complete a mandatory safety stop of at least 3 minutes at the end of each dive. Penalties for exceeding no-decompression limits." },
+                { "Japan", "No spearfishing allowed within designated marine protected areas. Divers must adhere to strict underwater photography guidelines." },
+                { "Norway", "Minimum age requirement for scuba diving is 14 years. Divers under 18 must have parental consent for diving activities." },
+                { "South Africa", "Divers must carry a surface signaling device (e.g., whistle or inflatable tube) during all dives. Mandatory dive briefing before each dive." },
+                { "United States", "All divers must wear a certified diving suit and carry a dive buddy at all times." },
+                { "United Kingdom", "Maximum dive depth limited to 30 meters for recreational divers. Deep dives require advanced certification." }
+            };
+        //Some strings for the menu
+        static readonly string[] strings = { "1.Login", "2.Register", "0.Exit" };
+        const string TITLE = "\t \t \t \t \t******** ProDive 2.0 S&M ********";
+        const string MENU = "\t \t \t \t \t Welcome To Our Diving Platform -\n" +
+            "All You Need To Do Is Sign Up As A Diver, Choose Your Diving Club,\n" +
+            "Choose Your Instructore And Grab Some Equipment And Enjoy The Experiance!\n\n" +
+            "1. Register As A New Diver.\n" +
+            "2. Sign In As Existing Diver.\n" +
+            "3. Show Me All Clubs Available.\n" +
+            "4. Show Me All Available Countries And There Relative Regulatios.\n" +
+            "5. Exit Program.";
+        //User indicator (Will be updated with the user's name, club and partners)
+        static string userIndicator = "\t \t \t User: {0}\t\tDive Club: {1}\t\tDive Partners: {2}";
         static DivingClub currentDivingClub;
         static Diver connectedUser;
         static List<Diver> divePartners = new List<Diver>();
         static Dictionary<string, Diver> users;
         static List<DivingClub> divingClub_DB;
         static Dictionary<string, Country> availableCountrys;
+        static List<Country> countries;
+
+        //Create all countries with their regulations
+        static void CreateCountries()
+        {
+            foreach(KeyValuePair<string, string> entry in regulations)
+            {
+                Country country = new Country(entry.Key, entry.Value);
+                countries.Add(country);
+            }
+        }
+
+
         static void CreateDivingClub_DB()
         {
             divingClub_DB = new List<DivingClub>();
@@ -153,7 +193,7 @@ namespace Systems_Analysis
         {
             Console.WriteLine("DivingClubs: ");
             DivingClub[] divingClubArr = divingClub_DB.ToArray();
-            PrintArray(divingClubArr);
+            //PrintArray(divingClubArr);
             int index;
             Console.Write("DivingClub index: ");
             while (!int.TryParse(Console.ReadLine(), out index) || index >= divingClubArr.Length)
@@ -180,7 +220,7 @@ namespace Systems_Analysis
             Console.WriteLine("Enter Dive Details:");
             Console.WriteLine("Dive Sites: ");
             DiveSite[] diveSitesArr = currentDivingClub.GetDiveSites().ToArray();
-            PrintArray(diveSitesArr);
+            //PrintArray(diveSitesArr);
             int index;
             Console.Write("Site index: ");
             while (!int.TryParse(Console.ReadLine(), out index) || index >= diveSitesArr.Length)
@@ -234,7 +274,7 @@ namespace Systems_Analysis
 
             DivingInstructor[] instructors = currentDivingClub.GetDivingInstructors().ToArray();
             Console.WriteLine("Dive Instructors: ");
-            PrintArray(instructors);
+            //PrintArray(instructors);
             Console.Write("Instructor index: ");
             while (!int.TryParse(Console.ReadLine(), out index) || index >= instructors.Length)
             {
@@ -260,44 +300,6 @@ namespace Systems_Analysis
         }
 
 
-        static void Main()
-        {
-
-            //while (true)
-            //{
-            users = LoadUsers();
-            Console.Clear();
-            MainMenu();
-            int choice;
-            while (!int.TryParse(Console.ReadLine(), out choice))
-            {
-                Console.WriteLine("Invalid Input");
-            }
-            bool flag = true;
-            while (flag)
-            {
-                switch (choice)
-                {
-                    case 0:
-                        Environment.Exit(0);
-                        break;
-                    case 1:
-                        flag = !LogIn();
-                        break;
-                    case 2:
-                        RegisterTest();
-                        flag = !LogIn();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Input, Try Again");
-                        break;
-
-                }
-            }
-            SecondScreen();
-            //}
-
-        }
         static public bool LogIn()
         {
             int tryCount = 0;
@@ -502,15 +504,45 @@ namespace Systems_Analysis
             }
         }
 
-        static void PrintArray<T>(T[] list)
+        
+        static void Main()
         {
-            int index = 0;
-            foreach (T item in list)
+            /*
+            users = LoadUsers();
+            Console.Clear();
+            MainMenu();
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
             {
-                Console.Write("(" + index + ") ");
-                Console.WriteLine(item);
-                index++;
+                Console.WriteLine("Invalid Input");
             }
+            bool flag = true;
+            while (flag)
+            {
+                switch (choice)
+                {
+                    case 0:
+                        Environment.Exit(0);
+                        break;
+                    case 1:
+                        flag = !LogIn();
+                        break;
+                    case 2:
+                        RegisterTest();
+                        flag = !LogIn();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input, Try Again");
+                        break;
+
+                }
+            }
+            SecondScreen();
+            //}*/
+
+            Console.WriteLine(TITLE);
+            Console.WriteLine(userIndicator);
+
         }
     }
 }

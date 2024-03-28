@@ -8,23 +8,23 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\misha\\.nuget\\packages\\": {},
+    "C:\\Users\\sergb\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
+      "projectUniqueName": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
       "projectName": "Systems Analysis",
-      "projectPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
-      "packagesPath": "C:\\Users\\misha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\obj\\",
+      "projectPath": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
+      "packagesPath": "C:\\Users\\sergb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\System-Analysis-Divers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\misha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sergb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -1,7 +1,0 @@
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\bin\Debug\SystemsAnalysis_Restaurant.exe.config
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\bin\Debug\SystemsAnalysis_Restaurant.exe
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\bin\Debug\SystemsAnalysis_Restaurant.pdb
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.csproj.AssemblyReference.cache
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.csproj.CoreCompileInputs.cache
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.exe
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\System Analysis - Restaurant\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.pdb

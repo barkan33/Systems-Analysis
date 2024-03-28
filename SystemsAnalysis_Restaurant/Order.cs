@@ -8,23 +8,24 @@ namespace SystemsAnalysis_Restaurant
 {
     public class Order
     {
-        private Customer customer;
         private List<Dish> dishes;
         private Table table;
-        private int status;
+        private OrderStatus status;
 
-        public Order(Customer customer, List<Dish> dishes, Table table, int status)
+        public enum OrderStatus
         {
-            this.customer = customer;
+            Placed, // Order placed by customer
+            Preparing, // Order being prepared by chef
+            Ready // Order ready for serving
+        }
+
+        public Order(List<Dish> dishes, Table table, OrderStatus status)
+        {
             this.dishes = dishes;
             this.table = table;
             this.status = status;
         }
 
-        public void SetCustomer(Customer customer)
-        {
-            this.customer = customer;
-        }
         public void SetDishes(List<Dish> dishes)
         {
             this.dishes = dishes;
@@ -35,21 +36,9 @@ namespace SystemsAnalysis_Restaurant
             this.table = table;
         }
 
-        public void SetStatus(int status)
+        public void SetStatus(OrderStatus status)
         {
-            if (status == 1 || status == 2 || status == 3)
-            {
-                this.status = status;
-            }
-            else
-            {
-                Console.WriteLine("Invalid status");
-            }
-        }
-
-        public Customer GetCustomer()
-        {
-            return customer;
+            this.status = status;
         }
 
         public List<Dish> GetDishes()
@@ -62,7 +51,7 @@ namespace SystemsAnalysis_Restaurant
             return table;
         }
 
-        public int GetStatus()
+        public OrderStatus GetStatus()
         {
             return status;
         }
@@ -72,7 +61,7 @@ namespace SystemsAnalysis_Restaurant
             dishes.Remove(dish);
         }
 
-        public void UpdateStatus(int status)
+        public void UpdateStatus(OrderStatus status)
         {
             SetStatus(status);
         }

@@ -24,7 +24,7 @@ namespace SystemsAnalysis_Restaurant
             string[] dishNames = { "Spaghetti Carbonara", "Chicken Tikka Masala", "Margherita Pizza", "Caesar Salad", "Sushi Rolls", "Cheeseburger", "Pad Thai", "Fish and Chips", "Mushroom Risotto", "Tiramisu" };
             string[] dishDescriptions = { "Classic Italian pasta dish with bacon and eggs", "Creamy Indian chicken curry with rice",
                            "Traditional Italian pizza with tomato, mozzarella, and basil", "Fresh salad with romaine lettuce," +
-                                          " and Caesar dressing", "Japanese rice rolls filled with fish,vegetables, and avcado", "Juicy beef patty with cheese," +
+                                          " and Caesar dressing", "Japanese rice rolls filled with fish,vegetables, and avocado", "Juicy beef patty with cheese," +
                                                          " lettuce, and tomato in a bun", "Stir-fried rice noodles with shrimp, tofu, and peanuts",
                            "Deep-fried battered fish served with fries", "Creamy rice dish cooked with mushrooms and parmesan cheese",
                            "Layers of coffee-soaked ladyfingers and mascarpone cheese" };
@@ -49,24 +49,28 @@ namespace SystemsAnalysis_Restaurant
             return dishes;
         }
 
+        public Dish GetDishById(int id)
+        {
+            return dishes[id];
+        }
         public string PrintMenu()
         {
-            string tableFormat = "|{0,-30}|{1,-60}|{2,-15}|\n";
+            string tableFormat = "|{0,-5}|{1,-29}|{2,-64}|{3,-15}|\n";
             StringBuilder sb = new StringBuilder();
-            sb.Append("+--------------------------------+------------------------------------------------------------+---------------+\n");
-            sb.Append("|              Dish              |                      Description                               |     Price     |\n");
-            sb.Append("+--------------------------------+------------------------------------------------------------+---------------+\n");
+            sb.Append("+-----------------------------------+----------------------------------------------------------------+---------------+\n");
+            sb.Append("|              Dish                 |                      Description                               |     Price     |\n");
+            sb.Append("+-----------------------------------+----------------------------------------------------------------+---------------+\n");
 
             for (int i = 0; i < dishes.Count; i++)
             {
 
                 string price = dishes[i].GetDishPrice().ToString("C");
 
-                sb.AppendFormat(tableFormat, dishes[i].GetDishName(), dishes[i].GetDishDescription(), price);
+                sb.AppendFormat(tableFormat, dishes[i].GetDishID(), dishes[i].GetDishName(), dishes[i].GetDishDescription(), price);
                 sb.AppendLine();
             }
 
-            sb.Append("+--------------------------------+------------------------------------------------------------+---------------+\n");
+            sb.Append("+-----------------------------------+----------------------------------------------------------------+---------------+\n");
             return sb.ToString();
         }
 

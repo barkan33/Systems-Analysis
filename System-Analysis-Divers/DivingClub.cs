@@ -48,9 +48,13 @@ namespace Systems_Analysis
         private void AddDiveSites(DiveSite diveSite) { diveSites.Add(diveSite); }
         public void AddDive(Dive log) { diveLog.Add(log); }
 
+        public void SetDivingSites(List<DiveSite> diveSites)
+        {
+            this.diveSites = diveSites;
+        }
 
 
-        public DivingClub(string name, string licenseNumber, string contactPerson, string address, Country country, string phone, string email, string website)
+        public DivingClub(string name, string licenseNumber, string contactPerson, string address, Country country, string phone, string email, string website, List<DiveSite> diveSites)
         {
             SetName(name);
             SetLicenseNumber(licenseNumber);
@@ -61,7 +65,7 @@ namespace Systems_Analysis
             SetEmail(email);
             SetWebsite(website);
             instructors = new List<DivingInstructor>();
-            diveSites = new List<DiveSite>();
+            SetDivingSites(diveSites);
             diveLog = new List<Dive>();
         }
 
@@ -69,7 +73,7 @@ namespace Systems_Analysis
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("**************************************************");
-            sb.AppendLine($"*                    {name}                      *");
+            sb.AppendLine($"*             {name}             *");
             sb.AppendLine("**************************************************");
             sb.AppendLine($"License Number: {licenseNumber}");
             sb.AppendLine($"Contact Person: {contactPerson}");

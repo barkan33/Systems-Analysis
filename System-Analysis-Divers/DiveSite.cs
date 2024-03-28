@@ -8,29 +8,25 @@ namespace Systems_Analysis
 {
     public class DiveSite
     {
-        private string name;
-        private string address;
+        private int code;
         private string description;
         private double perimeter;
         private double depth;
         private string waterType;
 
-        public DiveSite(string name, string address, string description, double perimeter, double depth, string waterType)
+        public DiveSite(int code,  string description, double perimeter, double depth, string waterType)
         {
-            SetName(name);
-            SetAddress(address);
+            SetName(code);
             SetDescription(description);
             SetPerimeter(perimeter);
             SetDepth(depth);
             SetWaterType(waterType);
         }
-        public string GetName() { return name; }
+        public int GetName() { return code; }
 
-        public void SetName(string name) { this.name = name; }
+        public void SetName(int code) { this.code = code; }
 
-        public string GetAddress() { return address; }
 
-        public void SetAddress(string address) { this.address = address; }
 
         public string GetDescription() { return description; }
 

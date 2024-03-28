@@ -9,6 +9,17 @@ namespace Systems_Analysis
 {
     internal class Program
     {
+        //initialize all the variables
+        static DivingClub currentDivingClub;
+        static Diver connectedUser;
+        static List<Diver> divePartners = new List<Diver>();
+        static Dictionary<string, Diver> users;
+        static List<DivingClub> divingClubs;
+        static Dictionary<string, Country> availableCountrys;
+        static List<Country> countries;
+        static List<DiveSite> diveSites;
+        static Random random = new Random();
+
         //all countries and there regulations
         static Dictionary<string, string> regulations = new Dictionary<string, string>
             {
@@ -34,15 +45,11 @@ namespace Systems_Analysis
             "3. Show Me All Clubs Available.\n" +
             "4. Show Me All Available Countries And There Relative Regulatios.\n" +
             "5. Exit Program.";
-        //User indicator (Will be updated with the user's name, club and partners)
+
+
+        //User indicator (Will be updated with the user's code, club and partners)
         static string userIndicator = "\t \t \t User: {0}\t\tDive Club: {1}\t\tDive Partners: {2}";
-        static DivingClub currentDivingClub;
-        static Diver connectedUser;
-        static List<Diver> divePartners = new List<Diver>();
-        static Dictionary<string, Diver> users;
-        static List<DivingClub> divingClub_DB;
-        static Dictionary<string, Country> availableCountrys;
-        static List<Country> countries;
+
 
         //Create all countries with their regulations
         static void CreateCountries()
@@ -54,16 +61,63 @@ namespace Systems_Analysis
             }
         }
 
-
-        static void CreateDivingClub_DB()
+        //create diving clubs
+        static void CreateDivingClubs()
         {
-            divingClub_DB = new List<DivingClub>();
-            foreach (DivingClub divingClub in divingClub_DB)
+            Random random = new Random();
+            divingClubs = new List<DivingClub>();
+            //some fake data to work with
+            string[] names = ["Deep Blue Divers" , "Coral Reef Diving", "Aqua Adventures", "Marine Explorers",
+                              "Ocean Quest", "Oceanic Odyssey", "Dive Master Academy", "Seabed Seekers",
+                              "Tidal Titans", "Sunken Treasure Divers"];
+            string[] addresses = ["123 Ocean Drive", "456 Coral Lane", "789 Reef Road", "1011 Seabed Street",
+                                  "1213 Dive Drive", "1415 Oceanic Avenue", "1617 Treasure Trail", "1819 Atlantis Avenue",
+                                  "2021 Shipwreck Street", "2223 Dive Drive"];
+            string[] contactPersons = ["John Doe", "Jane Doe", "Jack Black", "Jill White", "Jim Brown",
+                                       "Jenny Green", "Joe Blue", "Jill Red", "Jack Yellow", "Jill Pink"];
+            string[] phoneNumbers = ["+1234567890", "+2345678901", "+3456789012", "+4567890123", "+5678901234",
+                                    "+6789012345", "+7890123456", "+8901234567", "+9012345678", "+0123456789" ];
+
+            for (int i = 0; i < 10; i++)
             {
-                availableCountrys.Add(divingClub.GetCountry().GetName(), divingClub.GetCountry());
+                List<DiveSite> sites = new List<DiveSite>();
+                sites.Add(diveSites[i + 1]);
+                sites.Add(diveSites[i + 2]);
+                divingClubs.Add(new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i],addresses[i], countries[random.Next(countries.Count)],
+                    phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com" ), sites);
             }
-            //TODO
         }
+
+        static void CreateDiveSites()
+        {
+            diveSites = new List<DiveSite>();
+            string[] descriptions =
+            [
+        "Beautiful coral reef", "Sunken shipwreck", "Underwater cave", "Colorful fish",
+        "Giant kelp forest", "Manta ray cleaning station", "Shark feeding site", "Whale migration route",
+        "Seagrass meadow", "Deep ocean trench", "Volcanic underwater vent", "Pristine sandy bottom",
+        "Underwater mountain", "Underwater canyon", "Underwater waterfall",
+        "Coral garden", "Lagoon dive", "Wall dive", "Night dive", "Drift dive"
+            ];
+
+            string[] waterTypes = new string[] { "Saltwater", "Freshwater" };
+
+            Random random = new Random();
+
+            for (int i = 0; i < 20; i++)
+            {
+                string description = descriptions[i % descriptions.Length]; 
+                string waterType = waterTypes[random.Next(2)]; 
+
+                double perimeter = 100.0 + (random.NextDouble() * (420.23 - 100.0)); 
+                double depth = 15.0 + (random.NextDouble() * (40.0 - 15.0)); 
+
+                int code = random.Next(101, 987); // Random code
+
+                diveSites.Add(new DiveSite(code, description, perimeter, depth, waterType));
+            }
+        }
+
         static void Topic()
         {
             string fName = "";
@@ -192,7 +246,7 @@ namespace Systems_Analysis
         private static void EnterClub()
         {
             Console.WriteLine("DivingClubs: ");
-            DivingClub[] divingClubArr = divingClub_DB.ToArray();
+            DivingClub[] divingClubArr = divingClubs.ToArray();
             //PrintArray(divingClubArr);
             int index;
             Console.Write("DivingClub index: ");
@@ -346,8 +400,8 @@ namespace Systems_Analysis
 
 
 
-            Console.WriteLine("Enter your first name:" + firstName);
-            Console.WriteLine("Enter your last name:" + lastName);
+            Console.WriteLine("Enter your first code:" + firstName);
+            Console.WriteLine("Enter your last code:" + lastName);
             Console.WriteLine("Enter your password (at least 8 characters):" + password);
             Console.WriteLine("Enter your 6-digit ID:" + id);
             if (DateTime.TryParseExact(dateInput, "yyyy-MM-dd", null, DateTimeStyles.None, out dateOfBirth))
@@ -377,11 +431,11 @@ namespace Systems_Analysis
             string firstName;
             while (true)
             {
-                Console.WriteLine("Enter your first name:");
+                Console.WriteLine("Enter your first code:");
                 firstName = Console.ReadLine();
                 if (string.IsNullOrEmpty(firstName) || Regex.IsMatch(firstName, @"\d?[!@#$%^&*()_+]"))
                 {
-                    Console.WriteLine("First name cannot be empty or contain numbers.");
+                    Console.WriteLine("First code cannot be empty or contain numbers.");
                     continue;
                 }
 
@@ -391,11 +445,11 @@ namespace Systems_Analysis
             string lastName;
             while (true)
             {
-                Console.WriteLine("Enter your last name:");
+                Console.WriteLine("Enter your last code:");
                 lastName = Console.ReadLine();
                 if (string.IsNullOrEmpty(lastName) || Regex.IsMatch(lastName, @"\d?[!@#$%^&*()_+]"))
                 {
-                    Console.WriteLine("Last name cannot be empty or contain numbers.");
+                    Console.WriteLine("Last code cannot be empty or contain numbers.");
                     continue;
                 }
                 break;
@@ -507,41 +561,19 @@ namespace Systems_Analysis
         
         static void Main()
         {
-            /*
-            users = LoadUsers();
-            Console.Clear();
-            MainMenu();
-            int choice;
-            while (!int.TryParse(Console.ReadLine(), out choice))
-            {
-                Console.WriteLine("Invalid Input");
-            }
-            bool flag = true;
-            while (flag)
-            {
-                switch (choice)
-                {
-                    case 0:
-                        Environment.Exit(0);
-                        break;
-                    case 1:
-                        flag = !LogIn();
-                        break;
-                    case 2:
-                        RegisterTest();
-                        flag = !LogIn();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Input, Try Again");
-                        break;
 
-                }
-            }
-            SecondScreen();
-            //}*/
 
             Console.WriteLine(TITLE);
             Console.WriteLine(userIndicator);
+            countries = new List<Country>();
+            CreateCountries();
+            divingClubs = new List<DivingClub>();
+            CreateDivingClubs();
+
+            foreach (DivingClub club in divingClubs)
+            {
+                Console.WriteLine(club);
+            }
 
         }
     }

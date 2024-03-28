@@ -1,33 +1,3 @@
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\bin\Debug\net8.0\Systems Analysis.exe
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\bin\Debug\net8.0\Systems Analysis.deps.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\bin\Debug\net8.0\Systems Analysis.runtimeconfig.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\bin\Debug\net8.0\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\bin\Debug\net8.0\Systems Analysis.pdb
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.AssemblyInfoInputs.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.AssemblyInfo.cs
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.csproj.CoreCompileInputs.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.sourcelink.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\refint\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.pdb
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\Systems Analysis.genruntimeconfig.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\obj\Debug\net8.0\ref\Systems Analysis.dll
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\bin\Debug\net8.0\Systems Analysis.exe
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\bin\Debug\net8.0\Systems Analysis.deps.json
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\bin\Debug\net8.0\Systems Analysis.runtimeconfig.json
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\bin\Debug\net8.0\Systems Analysis.dll
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\bin\Debug\net8.0\Systems Analysis.pdb
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.AssemblyInfoInputs.cache
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.AssemblyInfo.cs
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.csproj.CoreCompileInputs.cache
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.sourcelink.json
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.dll
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\refint\Systems Analysis.dll
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.pdb
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\Systems Analysis.genruntimeconfig.cache
-C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\obj\Debug\net8.0\ref\Systems Analysis.dll
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.exe
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.deps.json
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.runtimeconfig.json
@@ -43,18 +13,3 @@ C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-A
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.pdb
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.genruntimeconfig.cache
 C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\System-Analysis-Divers\obj\Debug\net8.0\ref\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.exe
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.deps.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.runtimeconfig.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\bin\Debug\net8.0\Systems Analysis.pdb
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.AssemblyInfoInputs.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.AssemblyInfo.cs
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.csproj.CoreCompileInputs.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.sourcelink.json
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\refint\Systems Analysis.dll
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.pdb
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\Systems Analysis.genruntimeconfig.cache
-C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\System-Analysis-Divers\obj\Debug\net8.0\ref\Systems Analysis.dll

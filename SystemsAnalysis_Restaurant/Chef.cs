@@ -8,8 +8,15 @@ namespace SystemsAnalysis_Restaurant
 {
     public class Chef : Staff
     {
-        public Chef(string _username, string _password) : base(_username, _password) { }
-        public void PrepareFood() { }
-        public void UpdateOrderStatus() { }
+
+        public static void PrepareFood(Order order)
+        {
+            order.SetStatus(Order.OrderStatus.Preparing);
+        }
+        public static void UpdateOrderStatus(Order order)
+        {
+            order.SetStatus(Order.OrderStatus.Ready);
+        }
+
     }
 }

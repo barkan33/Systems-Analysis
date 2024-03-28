@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SystemsAnalysis_Restaurant
 {
-    public class Admin : User
+    public class Admin
     {
-        public Admin(string _username, string _password) : base(_username, _password) { }
-        public void ConfigureSystem() { }
-        public void ManageUsers() { }
-        public void GenerateReports() { }
+        private static string username = "password";
+        private static string password = "username";
+
+        public static void UpdateMenu(Menu menu)
+        {
+            //TODO
+        }
+        public static bool Login(string user, string pass)
+        {
+            return user == username && pass == password;
+        }
     }
 }

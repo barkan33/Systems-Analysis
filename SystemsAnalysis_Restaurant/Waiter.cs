@@ -8,8 +8,18 @@ namespace SystemsAnalysis_Restaurant
 {
     public class Waiter : Staff
     {
-        public Waiter(string _username, string _password) : base(_username, _password) { }
+        public static void CleanTable(List<Order> orders)
+        {
+            //Print Orders
+            //choice table
+            //TODO
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                //choice table
+            }
+            orders[choice].GetTable().SetIsOccupied(false);
 
-        public void ReceiveNotifications() { }
+        }
     }
 }

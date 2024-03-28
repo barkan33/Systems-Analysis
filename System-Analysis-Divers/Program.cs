@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Transactions;
@@ -10,15 +12,17 @@ namespace Systems_Analysis
     internal class Program
     {
         //initialize all the variables
+        static Dictionary<string, Diver> users;
         static DivingClub currentDivingClub;
         static Diver connectedUser;
         static List<Diver> divePartners = new List<Diver>();
-        static Dictionary<string, Diver> users;
         static List<DivingClub> divingClubs;
         static Dictionary<string, Country> availableCountrys;
         static List<Country> countries;
         static List<DiveSite> diveSites;
         static Random random = new Random();
+        static int mainMenuChoice, choice;
+        static bool addMoreParticipants;
 
         //all countries and there regulations
         static Dictionary<string, string> regulations = new Dictionary<string, string>
@@ -35,7 +39,6 @@ namespace Systems_Analysis
                 { "United Kingdom", "Maximum dive depth limited to 30 meters for recreational divers. Deep dives require advanced certification." }
             };
         //Some strings for the menu
-        static readonly string[] strings = { "1.Login", "2.Register", "0.Exit" };
         const string TITLE = "\t \t \t \t \t******** ProDive 2.0 S&M ********";
         const string MENU = "\t \t \t \t \t Welcome To Our Diving Platform -\n" +
             "All You Need To Do Is Sign Up As A Diver, Choose Your Diving Club,\n" +
@@ -48,7 +51,41 @@ namespace Systems_Analysis
 
 
         //User indicator (Will be updated with the user's code, club and partners)
-        static string userIndicator = "\t \t \t User: {0}\t\tDive Club: {1}\t\tDive Partners: {2}";
+        //static string userIndicator = "\t \t \t User: {0}\t\tDive Club: {1}\t\tDive Partners: {2}";
+
+
+        //json handeling for users and dives 
+        static void LoadUsersFromJson()
+        {
+            try
+            {
+                string json = File.ReadAllText(@".\users.json");
+                users = JsonSerializer.Deserialize<Dictionary<string, Diver>>(json);
+            }
+            catch (FileNotFoundException)
+            {
+                users = new Dictionary<string, Diver>();
+            }
+            catch (JsonException)
+            {
+                Console.WriteLine("Error loading user data from JSON file. Using an empty user dictionary.");
+                users = new Dictionary<string, Diver>();
+            }
+        }
+        static void SaveUsersToJson()
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(users);
+                File.WriteAllText(@".\users.json", json);
+                Console.WriteLine("User data saved successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving user data to JSON file: {ex.Message}");
+            }
+        }
+
 
 
         //Create all countries with their regulations
@@ -84,23 +121,24 @@ namespace Systems_Analysis
                 sites.Add(diveSites[i + 1]);
                 sites.Add(diveSites[i + 2]);
                 divingClubs.Add(new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i],addresses[i], countries[random.Next(countries.Count)],
-                    phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com" ), sites);
+                    phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com", sites ));
             }
         }
 
+        //create dive sites
         static void CreateDiveSites()
         {
             diveSites = new List<DiveSite>();
             string[] descriptions =
-            [
-        "Beautiful coral reef", "Sunken shipwreck", "Underwater cave", "Colorful fish",
-        "Giant kelp forest", "Manta ray cleaning station", "Shark feeding site", "Whale migration route",
-        "Seagrass meadow", "Deep ocean trench", "Volcanic underwater vent", "Pristine sandy bottom",
-        "Underwater mountain", "Underwater canyon", "Underwater waterfall",
-        "Coral garden", "Lagoon dive", "Wall dive", "Night dive", "Drift dive"
-            ];
+                    [
+                            "Beautiful coral reef", "Sunken shipwreck", "Underwater cave", "Colorful fish",
+                         "Giant kelp forest", "Manta ray cleaning station", "Shark feeding site", "Whale migration route",
+                            "Seagrass meadow", "Deep ocean trench", "Volcanic underwater vent", "Pristine sandy bottom",
+                            "Underwater mountain", "Underwater canyon", "Underwater waterfall",
+                            "Coral garden", "Lagoon dive", "Wall dive", "Night dive", "Drift dive"
+                    ];
 
-            string[] waterTypes = new string[] { "Saltwater", "Freshwater" };
+            string[] waterTypes = [ "Saltwater", "Freshwater" ];
 
             Random random = new Random();
 
@@ -112,41 +150,31 @@ namespace Systems_Analysis
                 double perimeter = 100.0 + (random.NextDouble() * (420.23 - 100.0)); 
                 double depth = 15.0 + (random.NextDouble() * (40.0 - 15.0)); 
 
-                int code = random.Next(101, 987); // Random code
+                int code = random.Next(101, 987); 
 
                 diveSites.Add(new DiveSite(code, description, perimeter, depth, waterType));
             }
         }
 
-        static void Topic()
-        {
-            string fName = "";
-            string lName = "";
-            string diveClub = "";
-            if (connectedUser != null)
-            {
-                fName = connectedUser.GetFirstName();
-                lName = connectedUser.GetLastName();
-            }
-            if (currentDivingClub != null)
-            {
-                diveClub = currentDivingClub.ToString();
-            }
 
-            Console.WriteLine($"User: {fName} {lName}            Dive Club: {diveClub}            Dive-Partners: {divePartners.Count}");
-        }
-        static void MainMenu()
+        static string Topic()
         {
-            Topic();
-            Console.WriteLine("Welcome To ProDrive 3000\n========================");
-            Console.WriteLine("Select:\n1.Login\n2.Register\n0.Exit");
+            string userFirstName = connectedUser?.GetFirstName() ?? "";
+            string diveClubName = currentDivingClub?.GetName() ?? "";
+            int divePartnersCount = divePartners.Count;
+
+            string formattedString = string.Format("\t \t \t User: {0}\t\tDive Club: {1}\t\tDive Partners: {2}", userFirstName, diveClubName, divePartnersCount);
+            return formattedString;
         }
+
+
         static void SecondScreen()
         {
             Console.Clear();
+            Console.WriteLine(TITLE);
+            //top user indicator
             Topic();
-            Console.WriteLine($"Welcome {connectedUser.GetFirstName()},\n\nChoose:\n1) Add Dive\n2) Enter DiveClub\n3) Add Diving Partner/s\n4) Display Diving regulations By Country\n5) Login menu");
-            int choice;
+            Console.WriteLine($"Welcome {connectedUser.GetFirstName()},\n1. Plan Your Dive\n2. Enter DiveClub\n3. Add Diving Partner/s\n4. Display Diving regulations By Country\n5. Login menu");
             while (!int.TryParse(Console.ReadLine(), out choice))
             {
                 Console.WriteLine("Invalid Input");
@@ -157,7 +185,7 @@ namespace Systems_Analysis
                 switch (choice)
                 {
                     case 1:
-                        AddDive();
+                        DivePlanWindow();
                         SecondScreen();
                         break;
                     case 2:
@@ -213,13 +241,11 @@ namespace Systems_Analysis
 
         private static void AddDivingPartner()
         {
-            bool addMoreParticipants = true;
+            addMoreParticipants = true;
             while (addMoreParticipants)
             {
-
                 Console.Write("Enter Participant's ID: ");
                 string participantId = Console.ReadLine();
-
 
                 if (users.TryGetValue(participantId, out Diver newParticipant))
                 {
@@ -231,16 +257,50 @@ namespace Systems_Analysis
                 }
 
                 Console.Write("Do you want to add another participant? (y/n): ");
-                string addMore = Console.ReadLine();
-                addMoreParticipants = addMore.ToLower() == "y";
+                char response;
+                do
+                {
+                    response = Console.ReadLine().ToLower()[0];
+                } while (response != 'y' && response != 'n');
+
+                addMoreParticipants = response == 'y';
             }
+
             Console.Write("Do you want to register another participant? (y/n): ");
             string reg = Console.ReadLine();
-            addMoreParticipants = reg.ToLower() == "y";
-            if (addMoreParticipants)
+            if (reg.ToLower() == "y")
             {
-                divePartners.Add(RegisterTest());
+                divePartners.Add(Register());
             }
+        }
+
+        private static DivingClub PrintClubsByCountry()
+        {
+            Console.WriteLine("Optional:\n");
+            for (int i = 0; i < countries.Count; i++)
+            {
+                Console.WriteLine(i + 1 + ".");
+                Console.WriteLine(countries[i].GetName());
+            }
+            do
+            {
+                choice = int.Parse(Console.ReadLine());
+
+            } while (choice < 1 || choice > countries.Count);
+            string countryName = countries[choice - 1].GetName();
+            for (int i = 0; i < divingClubs.Count; i++)
+            {
+                if (divingClubs[i].GetCountry().GetName() == countryName)
+                {
+                    Console.WriteLine(i + 1 + ".");
+                    Console.WriteLine(divingClubs[i].GetName());
+                }
+            }
+            do
+            {
+                choice = int.Parse(Console.ReadLine());
+            }while (choice < 1 || choice > divingClubs.Count);
+            return divingClubs[choice - 1];
         }
 
         private static void EnterClub()
@@ -257,13 +317,22 @@ namespace Systems_Analysis
             }
             currentDivingClub = divingClubArr[index];
         }
-        //TODO Add Equipment to AddDive()
-        static void AddDive()
+        //TODO Add Equipment to DivePlanWindow()
+        static void DivePlanWindow()
         {
+            DateOnly date;
+            TimeOnly entryTime;
+            TimeOnly exitTime;
+            double waterTemperature;
+            double input;
+
+
+
             if (currentDivingClub == null)
             {
-                Console.WriteLine("First choose a club! Press any key");
-                Console.ReadKey();
+                Console.Clear();
+                Console.WriteLine("You need to choose a diving club first");
+                currentDivingClub = PrintClubsByCountry();
                 return;
             }
             while (divePartners.Count == 0)
@@ -273,18 +342,16 @@ namespace Systems_Analysis
             }
             Console.WriteLine("Enter Dive Details:");
             Console.WriteLine("Dive Sites: ");
-            DiveSite[] diveSitesArr = currentDivingClub.GetDiveSites().ToArray();
-            //PrintArray(diveSitesArr);
-            int index;
+            Console.WriteLine(diveSites);
             Console.Write("Site index: ");
-            while (!int.TryParse(Console.ReadLine(), out index) || index >= diveSitesArr.Length)
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice >= diveSites.Count)
             {
                 Console.WriteLine("Invalid Input for Site index!");
                 Console.Write("Site index: ");
             }
-            DiveSite diveSite = diveSitesArr[index];
-
-            DateOnly date;
+            DiveSite diveSite = diveSites.ElementAt(index);
+            Console.Clear();
+            Console.WriteLine(TITLE+"\n"+Topic());
             Console.Write("Date (YYYY-MM-DD): ");
             while (!DateOnly.TryParse(Console.ReadLine(), out date))
             {
@@ -292,7 +359,6 @@ namespace Systems_Analysis
                 Console.Write("Date (YYYY-MM-DD): ");
             }
 
-            TimeOnly entryTime;
             Console.Write("Entry Time (HH:MM): ");
             while (!TimeOnly.TryParse(Console.ReadLine(), out entryTime))
             {
@@ -300,7 +366,6 @@ namespace Systems_Analysis
                 Console.Write("Entry Time (HH:MM): ");
             }
 
-            TimeOnly exitTime;
             Console.Write("Exit Time (HH:MM): ");
             while (!TimeOnly.TryParse(Console.ReadLine(), out exitTime))
             {
@@ -308,7 +373,6 @@ namespace Systems_Analysis
                 Console.Write("Exit Time (HH:MM): ");
             }
 
-            double waterTemperature;
             Console.Write("Water Temperature: ");
             while (!double.TryParse(Console.ReadLine(), out waterTemperature))
             {
@@ -316,7 +380,6 @@ namespace Systems_Analysis
                 Console.Write("Water Temperature: ");
             }
 
-            double input;
             Console.Write("Enter Tide : 0 = low, 1 = high ");
             while (!double.TryParse(Console.ReadLine(), out input))
             {
@@ -357,13 +420,21 @@ namespace Systems_Analysis
         static public bool LogIn()
         {
             int tryCount = 0;
+            string id, password;
             while (true)
             {
                 Console.WriteLine("Enter your ID:");
-                string id = Console.ReadLine();
+                do
+                {
+                    id = Console.ReadLine();
+
+                }while(string.IsNullOrEmpty(Console.ReadLine()));
 
                 Console.WriteLine("Enter your password:");
-                string password = Console.ReadLine();
+                do
+                {
+                    password = Console.ReadLine();
+                }while (string.IsNullOrEmpty(Console.ReadLine()));
 
                 if (users.TryGetValue(id, out Diver user) && user.GetPassword() == password)
                 {
@@ -426,60 +497,65 @@ namespace Systems_Analysis
             //LogIn();
             return newUser;
         }
+
+        
         static Diver Register()
         {
-            string firstName;
+            LoadUsersFromJson();
+            string firstName, lastName, id, password, email;
+            string emailRegex = "^[a-zA-Z0-9][a-zA-Z0-9-\\._]+@([a-zA-Z0-9]){2,15}(\\.[a-zA-z]{1,6}){1,2}$";
+            DateTime dateOfBirth;
+            string regTitle = "\t \t \t \t \t****** Registration Section ******";
+            Console.WriteLine(regTitle);
+            Console.WriteLine("Enter your first name:");
             while (true)
             {
-                Console.WriteLine("Enter your first code:");
                 firstName = Console.ReadLine();
                 if (string.IsNullOrEmpty(firstName) || Regex.IsMatch(firstName, @"\d?[!@#$%^&*()_+]"))
                 {
-                    Console.WriteLine("First code cannot be empty or contain numbers.");
+                    Console.WriteLine("First name cannot be empty or contain numbers.");
                     continue;
                 }
-
                 break;
             }
-
-            string lastName;
+            Console.WriteLine("Enter your last name:");
             while (true)
             {
-                Console.WriteLine("Enter your last code:");
                 lastName = Console.ReadLine();
                 if (string.IsNullOrEmpty(lastName) || Regex.IsMatch(lastName, @"\d?[!@#$%^&*()_+]"))
                 {
-                    Console.WriteLine("Last code cannot be empty or contain numbers.");
+                    Console.WriteLine("Last name cannot be empty or contain numbers.");
                     continue;
                 }
                 break;
             }
-            string id;
+            Console.WriteLine("Enter your 6-digit ID:");
             while (true)
             {
-                Console.WriteLine("Enter your 6-digit ID:");
                 id = Console.ReadLine();
-                if (id.Length == 6 && int.TryParse(id, out _)) // Check length and numeric
+                if (id.Length == 6 && int.TryParse(id, out _))
                 {
+                    if (users.ContainsKey(id))
+                    {
+                        throw new Exception("User already exists");
+                    }
                     break;
                 }
                 Console.WriteLine("Invalid ID. Please enter a 6-digit number.");
             }
-
-            DateTime dateOfBirth;
+            Console.WriteLine("Enter your date of birth (YYYY-MM-DD):");
             while (true)
             {
-                Console.WriteLine("Enter your date of birth (YYYY-MM-DD):");
                 string dateInput = Console.ReadLine();
-
+                if (dateInput.ToLower() == "main") // Check if user wants to go back to Main
+                    return null; // Return null to indicate returning to Main
                 if (DateTime.TryParseExact(dateInput, "yyyy-MM-dd", null, DateTimeStyles.None, out dateOfBirth))
                 {
                     break;
                 }
                 Console.WriteLine("Invalid date format. Please use YYYY-MM-DD.");
             }
-
-            string password;
+            Console.WriteLine("Enter your password (at least 8 characters):");
             while (true)
             {
                 Console.WriteLine("Enter your password (at least 8 characters):");
@@ -491,13 +567,12 @@ namespace Systems_Analysis
                 }
                 break;
             }
-
-            string email;
-            const string emailRegex = "^[a-zA-Z0-9][a-zA-Z0-9-\\._]+@([a-zA-Z0-9]){2,15}(\\.[a-zA-z]{1,6}){1,2}$";
+            Console.WriteLine("Enter your email:");
             while (true)
             {
-                Console.WriteLine("Enter your email:");
                 email = Console.ReadLine();
+                if (email.ToLower() == "main") 
+                    return null; 
                 if (!Regex.IsMatch(email, emailRegex))
                 {
                     Console.WriteLine("Invalid email format.");
@@ -507,16 +582,20 @@ namespace Systems_Analysis
             }
 
             Diver newUser = new Diver(firstName, lastName, id, dateOfBirth, password, email);
-
-            bool isUserExist = users.ContainsKey(id);
-
             users.Add(id, newUser);
             string jsonString = JsonSerializer.Serialize(newUser);
             File.AppendAllText(@".\users.json", jsonString + Environment.NewLine);
+            SaveUsersToJson();
 
-            Console.WriteLine(isUserExist ? "A user with that ID already exists." : "Registration successful!");
+            Console.WriteLine("Registration successful!");
             return newUser;
         }
+
+       
+
+        
+
+
         static Dictionary<string, Diver> LoadUsers()
         {
             Dictionary<string, Diver> users = new Dictionary<string, Diver>();
@@ -561,18 +640,47 @@ namespace Systems_Analysis
         
         static void Main()
         {
-
-
-            Console.WriteLine(TITLE);
-            Console.WriteLine(userIndicator);
+            //Init
+            users = LoadUsers();
             countries = new List<Country>();
             CreateCountries();
             divingClubs = new List<DivingClub>();
+            diveSites = new List<DiveSite>();
+            CreateDiveSites();
             CreateDivingClubs();
 
-            foreach (DivingClub club in divingClubs)
+            //Main loop
+            while (true)
             {
-                Console.WriteLine(club);
+                //titles + menu
+                Console.WriteLine(TITLE);
+                Topic();
+                Console.WriteLine(MENU);
+                do
+                {
+
+                }while (!int.TryParse(Console.ReadLine(), out mainMenuChoice));
+                switch (mainMenuChoice)
+                {
+                    case 1:
+                        Register();
+                        break;
+                    case 2:
+                        LogIn();
+                        SecondScreen();
+                        break;
+                    case 3:
+                        PrintAllUsers(users);
+                        break;
+                    case 4:
+                        DivingRegulations();
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
             }
 
         }

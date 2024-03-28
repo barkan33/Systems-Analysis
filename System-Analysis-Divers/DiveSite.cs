@@ -43,5 +43,23 @@ namespace Systems_Analysis
         public string GetWaterType() { return waterType; }
 
         public void SetWaterType(string waterType) { this.waterType = waterType; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Dive Site Information");
+            sb.Append("Code: ");
+            sb.AppendLine(code.ToString());
+            sb.Append("Description: ");
+            sb.AppendLine(description);
+            sb.Append("Perimeter: ");
+            sb.AppendLine(perimeter.ToString());
+            sb.Append("Depth: ");
+            sb.AppendLine(depth.ToString());
+            sb.Append("Water Type: ");
+            sb.AppendLine(waterType);
+            sb.Append('*', 20);
+            return sb.ToString();
+        }
     }
 }

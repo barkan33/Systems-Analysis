@@ -9,7 +9,7 @@ namespace Systems_Analysis
 {
     internal class Program
     {
-        static DivingClub correntDivingClub;
+        static DivingClub currentDivingClub;
         static Diver connectedUser;
         static List<Diver> divePartners = new List<Diver>();
         static Dictionary<string, Diver> users;
@@ -34,9 +34,9 @@ namespace Systems_Analysis
                 fName = connectedUser.GetFirstName();
                 lName = connectedUser.GetLastName();
             }
-            if (correntDivingClub != null)
+            if (currentDivingClub != null)
             {
-                diveClub = correntDivingClub.ToString();
+                diveClub = currentDivingClub.ToString();
             }
 
             Console.WriteLine($"User: {fName} {lName}            Dive Club: {diveClub}            Dive-Partners: {divePartners.Count}");
@@ -92,10 +92,10 @@ namespace Systems_Analysis
 
         private static void DivingRegulations()
         {
-            if (correntDivingClub != null)
+            if (currentDivingClub != null)
             {
                 Console.WriteLine("The country's diving regulation of the club you have chosen: ");
-                Console.WriteLine(correntDivingClub.GetCountry());
+                Console.WriteLine(currentDivingClub.GetCountry());
             }
             else
             {
@@ -161,12 +161,12 @@ namespace Systems_Analysis
                 Console.WriteLine("Invalid Input for DivingClub index!");
                 Console.Write("DivingClub index: ");
             }
-            correntDivingClub = divingClubArr[index];
+            currentDivingClub = divingClubArr[index];
         }
         //TODO Add Equipment to AddDive()
         static void AddDive()
         {
-            if (correntDivingClub == null)
+            if (currentDivingClub == null)
             {
                 Console.WriteLine("First choose a club! Press any key");
                 Console.ReadKey();
@@ -179,7 +179,7 @@ namespace Systems_Analysis
             }
             Console.WriteLine("Enter Dive Details:");
             Console.WriteLine("Dive Sites: ");
-            DiveSite[] diveSitesArr = correntDivingClub.GetDiveSites().ToArray();
+            DiveSite[] diveSitesArr = currentDivingClub.GetDiveSites().ToArray();
             PrintArray(diveSitesArr);
             int index;
             Console.Write("Site index: ");
@@ -232,7 +232,7 @@ namespace Systems_Analysis
             string waterTide = input == 0 ? "Low Tide" : "High Tide";
 
 
-            DivingInstructor[] instructors = correntDivingClub.GetDivingInstructors().ToArray();
+            DivingInstructor[] instructors = currentDivingClub.GetDivingInstructors().ToArray();
             Console.WriteLine("Dive Instructors: ");
             PrintArray(instructors);
             Console.Write("Instructor index: ");
@@ -247,9 +247,9 @@ namespace Systems_Analysis
             List<Diver> tempDiverList = divePartners.GetRange(0, divePartners.Count);
             tempDiverList.Add(connectedUser);
 
-            Dive dive = new Dive(diveSite, date, entryTime, exitTime, waterTemperature, waterTide, tempDiverList, instructor, correntDivingClub.GetSignature());
+            Dive dive = new Dive(diveSite, date, entryTime, exitTime, waterTemperature, waterTide, tempDiverList, instructor, currentDivingClub.GetSignature());
             ///////////////////////            ///////////////////////            ///////////////////////TODO Add Equipment
-            correntDivingClub.AddDive(dive);
+            currentDivingClub.AddDive(dive);
             connectedUser.AddDiveToLog(dive);
             foreach (Diver diver in divePartners)
             {

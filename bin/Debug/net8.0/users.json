@@ -1,1 +1,2 @@
 {"FirstName":"test","LastName":"test","Id":"000000","DateOfBirth":"2000-01-01T00:00:00","Password":"test","Email":"test@","DiveLog":[{"DiveSite":{},"Date":"2024-03-27","EntryTime":"20:20:00","ExitTime":"20:25:00","WaterTemperature":20.2,"WaterCondition":"High","Participants":[],"Instructor":{},"ClubSignature":{},"Signatures":[]}],"Equipment":[],"Ranks":[]}
+{"FirstName":"test","LastName":"test","Id":"202384","DateOfBirth":"2000-01-01T00:00:00","Password":"test","Email":"test@","DiveLog":[],"Equipment":[],"Ranks":[]}

@@ -22,6 +22,11 @@ namespace Systems_Analysis
             SetDepth(depth);
             SetWaterType(waterType);
         }
+
+        public DiveSite(DiveSite diveSite)
+        {
+        }
+
         public int GetName() { return code; }
 
         public void SetName(int code) { this.code = code; }

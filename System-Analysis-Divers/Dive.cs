@@ -1,4 +1,6 @@
-﻿namespace Systems_Analysis
+﻿using System.Text;
+
+namespace Systems_Analysis
 {
     public class Dive
     {
@@ -29,7 +31,7 @@
             Signatures = new List<Signature>();
         }
         //builder recieving all except signatures(creating new empty list)
-        public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<Diver> divers, DivingInstructor instructor, Signature clubSignature)
+        public Dive(DiveSite diveSite, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<Diver> divers, DivingInstructor instructor)
         {
             DiveSite = diveSite;
             Date = date;
@@ -38,7 +40,6 @@
             WaterTemperature = waterTemperature;
             WaterCondition = waterCondition;
             Instructor = instructor;
-            ClubSignature = clubSignature;
             Participants = divers;
             Signatures = new List<Signature>();
         }
@@ -51,6 +52,40 @@
         public void AddSignature(Signature signature)
         {
             Signatures.Add(signature);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Dive Information");
+            sb.Append("Dive Site: ");
+            sb.AppendLine(DiveSite.GetDescription());
+            sb.Append("Date: ");
+            sb.AppendLine(Date.ToString());
+            sb.Append("Entry Time: ");
+            sb.AppendLine(EntryTime.ToString());
+            sb.Append("Exit Time: ");
+            sb.AppendLine(ExitTime.ToString());
+            sb.Append("Water Temperature: ");
+            sb.AppendLine(WaterTemperature.ToString());
+            sb.Append("Water Condition: ");
+            sb.AppendLine(WaterCondition);
+            sb.Append("Instructor: ");
+            sb.AppendLine(Instructor.GetName());
+            sb.Append("Club Signature: ");
+            sb.AppendLine(ClubSignature.ToString());
+            sb.Append("Participants: ");
+            foreach (Diver diver in Participants)
+            {
+                sb.AppendLine(diver.GetFirstName() + " " + diver.GetLastName());
+            }
+            sb.Append("Signatures: ");
+            foreach (Signature signature in Signatures)
+            {
+                sb.AppendLine(signature.ToString());
+            }
+            sb.Append('*', 20);
+            return sb.ToString();
         }
     }
 }

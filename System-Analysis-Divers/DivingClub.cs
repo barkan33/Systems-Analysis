@@ -69,6 +69,21 @@ namespace Systems_Analysis
             diveLog = new List<Dive>();
         }
 
+        public DivingClub(DivingClub other)
+        {
+            SetName(other.name);
+            SetLicenseNumber(other.licenseNumber);
+            SetContactPerson(other.contactPerson);
+            SetAddress(other.address);
+            SetCountry(other.country);
+            SetPhone(other.phone);
+            SetEmail(other.email);
+            SetWebsite(other.website);
+            instructors = new List<DivingInstructor>();
+            SetDivingSites(other.diveSites);
+            diveLog = new List<Dive>();
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

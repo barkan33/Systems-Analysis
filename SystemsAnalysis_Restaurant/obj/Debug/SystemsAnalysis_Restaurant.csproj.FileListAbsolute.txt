@@ -19,3 +19,7 @@ C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\SystemsAnalysis_Restaurant
 C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.csproj.CoreCompileInputs.cache
 C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.exe
 C:\Users\misha\OneDrive\Desktop\HTML\Systems Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.pdb
+C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.csproj.AssemblyReference.cache
+C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.csproj.CoreCompileInputs.cache
+C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.exe
+C:\Users\sergb\OneDrive\Documents\GitHub\SecureDevelopmentFinalProject\Systems-Analysis\SystemsAnalysis_Restaurant\obj\Debug\SystemsAnalysis_Restaurant.pdb

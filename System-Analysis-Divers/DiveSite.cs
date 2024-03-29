@@ -60,7 +60,7 @@ namespace Systems_Analysis
             sb.Append("Perimeter: ");
             sb.AppendLine($"{perimeter:F2}");
             sb.Append("Depth: ");
-            sb.AppendLine($"{depth: F2}");
+            sb.AppendLine($"{depth:F2}");
             sb.Append("Water Type: ");
             sb.AppendLine(waterType);
             sb.Append('*', 20);

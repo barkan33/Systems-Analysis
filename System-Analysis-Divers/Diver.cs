@@ -32,9 +32,24 @@ namespace Systems_Analysis
             Equipment = new List<EquipmentItem>();
             Ranks = new List<Rank>();
         }
+        public Diver CreateDiverCopy()
+        {
+            // Create a new Diver object with the same data
+            Diver newDiver = new Diver(GetFirstName(), GetLastName(), GetID(), GetDateOfBirth(), GetPassword(), GetEmail());
 
+            newDiver.DiveLog = DiveLog;
+            newDiver.Ranks = Ranks;
+
+
+            foreach (EquipmentItem item in Equipment)
+            {
+                newDiver.Equipment.Add(new EquipmentItem(item)); // Assuming EquipmentItem has a copy constructor
+            }
+
+            return newDiver;
+        }
         private void SetFirstName(string firstName) { FirstName = firstName; }
-        private void SetLastName(string lastName) { LastName = lastName; }
+        public void SetLastName(string lastName) { LastName = lastName; }//Private
         private void SetID(string id) { Id = id; }
         private void SetDateOfBirth(DateTime dateOfBirth) { DateOfBirth = dateOfBirth; }
         private void SetPassword(string password) { Password = password; }
@@ -56,8 +71,48 @@ namespace Systems_Analysis
         public List<Rank> GetRanks() { return Ranks; }
         public void SetRanks(List<Rank> ranks) { Ranks = ranks; }
 
-        public void SignDive(string diverName) { /* Implementation */ }
+        public Signature SignDive()
+        {
+            string fullName = $"{FirstName} {LastName}";
+            return new Signature(fullName, DateTime.Now);
+        }
         public void AddEquipmentItem(EquipmentItem item) { Equipment.Add(item); }
         public void AddRank(Rank rank) { Ranks.Add(rank); }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("**************************************************");
+            sb.AppendLine($"Diver: {FirstName} {LastName} *");
+            sb.AppendLine("**************************************************");
+            sb.AppendLine($"ID: {Id}");
+            sb.AppendLine($"Date of Birth: {DateOfBirth.ToShortDateString()}");
+            sb.AppendLine($"Email: {Email}");
+            sb.AppendLine($"Rank: \n{RanksListToString(Ranks)}");
+            sb.AppendLine("**************************************************");
+            return sb.ToString();
+        }
+        private string RanksListToString(List<Rank> ranks)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Rank rank in ranks)
+            {
+                sb.AppendLine(rank.ToString());
+
+            }
+            return sb.ToString();
+        }
+
+        public string GetEquipmentToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (EquipmentItem item in Equipment)
+            {
+                sb.Append(item.ToString() + ", ");
+            }
+            return sb.ToString();
+        }
     }
 }

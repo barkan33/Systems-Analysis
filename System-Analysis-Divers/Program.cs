@@ -13,14 +13,16 @@ namespace Systems_Analysis
     {
         //initialize all the variables
         static Dictionary<string, Diver> users;
+        static Dictionary<string, Country> availableCountrys;
         static DivingClub currentDivingClub;
         static Diver connectedUser;
+
         static List<Diver> divePartners = new List<Diver>();
         static List<DivingClub> divingClubs;
-        static Dictionary<string, Country> availableCountrys;
-        static List<Country> countries;
         static List<DiveSite> diveSites;
         static List<DivingInstructor> instructors;
+        static List<Country> countries;
+
         static Random random = new Random();
         static int mainMenuChoice, choice;
         static bool addMoreParticipants;
@@ -35,6 +37,14 @@ namespace Systems_Analysis
                 { "Italy", "Divers must complete a mandatory safety stop of at least 3 minutes at the end of each dive. Penalties for exceeding no-decompression limits." },
                 { "South Africa", "Divers must carry a surface signaling device (e.g., whistle or inflatable tube) during all dives. Mandatory dive briefing before each dive." },
                 { "United States", "All divers must wear a certified diving suit and carry a dive buddy at all times." }            };
+        static Dictionary<string, string> equipmentList = new Dictionary<string, string>
+        {
+            { "Knife", "Essential for safety and cutting lines." },
+            { "Compass", "For navigation underwater." },
+            { "Dive Suit", "Provides thermal protection and buoyancy." },
+            { "Oxygen Bottle", "Contains the air supply for breathing underwater." },
+            { "Camera", "Optional for capturing underwater memories." }
+        };
         //Some strings for the menu
         const string TITLE = "\t \t \t \t \t******** ProDive 2.0 S&M ********";
         const string MENU = "\t \t \t \t \t Welcome To Our Diving Platform -\n" +
@@ -181,13 +191,6 @@ namespace Systems_Analysis
             }
 
         }
-
-
-
-
-
-
-
 
         private static void DivingRegulations()
         {
@@ -351,9 +354,6 @@ namespace Systems_Analysis
             }
             currentDivingClub = divingClubs[index - 1];
         }
-        //TODO Add Equipment to DivePlanWindow()
-
-
         static void DivePlanWindow()
         {
             DateOnly date = GetDateInput("Date (YYYY-MM-DD): ");
@@ -361,6 +361,7 @@ namespace Systems_Analysis
             TimeOnly exitTime = GetTimeInput("Exit Time (HH:MM): ");
             double waterTemperature = GetDoubleInput("Water Temperature: ");
             string waterTide = GetWaterTideInput("Enter Tide : 0 = low, 1 = high ");
+            List<EquipmentItem> equipment;
 
             while (currentDivingClub == null)
             {
@@ -369,19 +370,79 @@ namespace Systems_Analysis
             }
             DiveSite diveSite = ChooseDiveSite();
             DivingInstructor instructor = ChooseInstructor();
+            equipment = SelectEquipment();
+            connectedUser.SetEquipment(equipment);
 
-            List<Diver> participants = new List<Diver>(divePartners);
-            participants.Add(connectedUser);
+            //העתקת הצוללנים בשביל שהכתובת לאובייקט הציוד תיהיה שונה בין צלילה לצלילה
+            List<Diver> participants = new List<Diver>();
+            foreach (Diver diver in divePartners)
+            {
+                participants.Add(diver.CreateDiverCopy());
+            }
+            participants.Add(connectedUser.CreateDiverCopy());
 
             Dive dive = new Dive(diveSite, date, entryTime, exitTime, waterTemperature, waterTide, participants, instructor);
+
             currentDivingClub.AddDive(dive);
             connectedUser.AddDiveToLog(dive);
+
             foreach (Diver diver in divePartners)
             {
                 diver.AddDiveToLog(dive);
             }
 
             Console.WriteLine("Dive added successfully!");
+        }
+
+        private static List<EquipmentItem> SelectEquipment()
+        {
+            List<EquipmentItem> equipment = new List<EquipmentItem>();
+
+            while (true)
+            {
+                string equipmentMenu = "Available Equipment:\n0. Exit\n";
+                int index = 0;
+                foreach (var item in equipmentList)
+                {
+                    index++;
+                    if (equipment.Find(equipmentItem => equipmentItem.Name == item.Key) != null)
+                    {
+                        continue;
+                    }
+                    equipmentMenu += $"{index}. {item.Key} - {item.Value}\n";
+                }
+                Console.WriteLine(equipmentMenu);
+                int choice;
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > equipmentList.Count)
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+                if (choice == 0)
+                {
+                    break;
+                }
+                EquipmentItem itemToAdd = AddEquipment(equipmentList.Keys.ElementAt(choice - 1));
+                equipment.Add(itemToAdd);
+            }
+            return equipment;
+        }
+        static EquipmentItem AddEquipment(string item)
+        {
+            Console.Write($"How Many? (Max 20): ");
+            int itemQuantity;
+            while (!int.TryParse(Console.ReadLine(), out itemQuantity) || itemQuantity < 0 || itemQuantity > 20)
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            if (itemQuantity == 0) { return null; }
+            string note = "";
+            try
+            {
+                note = Console.ReadLine();
+            }
+            catch (FormatException) { }
+
+            return new EquipmentItem(item, itemQuantity, note);
         }
 
         static DateOnly GetDateInput(string prompt)
@@ -659,6 +720,7 @@ namespace Systems_Analysis
                         return;
                     case 6:
                         //DIVE HISTORY 
+                        PrintUserHistory(connectedUser);
                         break;
                     default:
                         Console.WriteLine("Invalid Input, Try Again");
@@ -666,6 +728,18 @@ namespace Systems_Analysis
                 }
             }
         }
+
+        private static void PrintUserHistory(Diver connectedUser)
+        {
+            StringBuilder sb = new StringBuilder();
+            //TODO
+            //שם
+
+            //דרגה
+            //:צלילות
+            //
+        }
+
         static void Main()
         {
             //Init
@@ -675,6 +749,7 @@ namespace Systems_Analysis
             CreateDiveSites();
             CreateDivingClubs();
             CreateDivingInstructors();
+
 
             //Main loop
             while (true)
@@ -736,7 +811,6 @@ namespace Systems_Analysis
                         break;
                 }
             }
-
         }
     }
 }

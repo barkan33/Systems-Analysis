@@ -14,7 +14,7 @@ namespace Systems_Analysis
         private double depth;
         private string waterType;
 
-        public DiveSite(int code,  string description, double perimeter, double depth, string waterType)
+        public DiveSite(int code, string description, double perimeter, double depth, string waterType)
         {
             SetName(code);
             SetDescription(description);
@@ -58,9 +58,9 @@ namespace Systems_Analysis
             sb.Append("Description: ");
             sb.AppendLine(description);
             sb.Append("Perimeter: ");
-            sb.AppendLine(perimeter.ToString());
+            sb.AppendLine($"{perimeter:F2}");
             sb.Append("Depth: ");
-            sb.AppendLine(depth.ToString());
+            sb.AppendLine($"{depth: F2}");
             sb.Append("Water Type: ");
             sb.AppendLine(waterType);
             sb.Append('*', 20);

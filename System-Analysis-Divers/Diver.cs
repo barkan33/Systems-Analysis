@@ -47,7 +47,7 @@ namespace Systems_Analysis
         public string GetEmail() { return Email; }
 
 
-        public List<Dive> AddDiveToLog() { return DiveLog; }
+        public List<Dive> GetDiveLog() { return DiveLog; }
         public void AddDiveToLog(Dive dive) { DiveLog.Add(dive); }
 
         public List<EquipmentItem> GetEquipment() { return Equipment; }

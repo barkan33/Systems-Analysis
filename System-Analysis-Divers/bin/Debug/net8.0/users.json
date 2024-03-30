@@ -7,7 +7,6 @@
         "Password": "12345678",
         "Email": "ser@mail.com",
         "DiveLog": [],
-        "Equipment": [],
         "Ranks": []
     },
     "112345": {
@@ -17,8 +16,120 @@
         "DateOfBirth": "2000-05-11T00:00:00",
         "Password": "12345678",
         "Email": "fj@mail.com",
-        "DiveLog": [],
-        "Equipment": [],
+        "DiveLog": [
+            {
+                "DiveSite": {
+                    "Code": 826,
+                    "Description": "Sunken shipwreck",
+                    "Perimeter": 265.1975036617416,
+                    "Depth": 21.371338495314664,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": null,
+                "Date": "2025-05-05",
+                "EntryTime": "15:15:00",
+                "ExitTime": "15:16:00",
+                "WaterTemperature": 12,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 1,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 1,
+                            "Note": "0"
+                        }
+                    ]
+                },
+                "Instructor": "Sarah Anderson",
+                "ClubSignature": null,
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-30T21:15:19.4408099+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-30T21:15:19.4408944+03:00"
+                    },
+                    {
+                        "Signer": "Sarah Anderson",
+                        "Timestamp": "2024-03-30T21:15:19.4408959+03:00"
+                    },
+                    {
+                        "Signer": "Signature: Deep Blue Divers",
+                        "Timestamp": "2024-03-30T21:15:19.4409623+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 324,
+                    "Description": "Underwater cave",
+                    "Perimeter": 187.19750937402057,
+                    "Depth": 39.06751664394433,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": "Deep Blue Divers",
+                "Date": "1999-05-25",
+                "EntryTime": "15:16:00",
+                "ExitTime": "15:17:00",
+                "WaterTemperature": 12,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 20,
+                            "Note": "00"
+                        },
+                        {
+                            "Name": "Camera",
+                            "Quantity": 15,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 20,
+                            "Note": "00"
+                        },
+                        {
+                            "Name": "Camera",
+                            "Quantity": 15,
+                            "Note": "0"
+                        }
+                    ]
+                },
+                "Instructor": "Amanda Garcia",
+                "ClubSignature": null,
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-30T21:33:31.2972341+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-30T21:33:31.2972423+03:00"
+                    },
+                    {
+                        "Signer": "Amanda Garcia",
+                        "Timestamp": "2024-03-30T21:33:31.2972499+03:00"
+                    },
+                    {
+                        "Signer": "Signature: Deep Blue Divers",
+                        "Timestamp": "2024-03-30T21:33:31.2974195+03:00"
+                    }
+                ]
+            }
+        ],
         "Ranks": []
     },
     "000000": {
@@ -30,30 +141,126 @@
         "Email": "qwe@qwe.com",
         "DiveLog": [
             {
-                "DiveSite": {},
-                "DivingClubName": "Marine Explorers",
-                "Date": "2000-02-01",
-                "EntryTime": "02:05:00",
-                "ExitTime": "02:58:00",
-                "WaterTemperature": 21,
+                "DiveSite": {
+                    "Code": 826,
+                    "Description": "Sunken shipwreck",
+                    "Perimeter": 265.1975036617416,
+                    "Depth": 21.371338495314664,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": null,
+                "Date": "2025-05-05",
+                "EntryTime": "15:15:00",
+                "ExitTime": "15:16:00",
+                "WaterTemperature": 12,
                 "WaterCondition": "High Tide",
                 "ParticipantsAndEquipment": {
-                    "test test": [],
-                    "Margo Miki": [
+                    "test test": [
                         {
-                            "Name": "Camera",
-                            "Quantity": 2,
-                            "Note": "m"
+                            "Name": "Knife",
+                            "Quantity": 1,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 1,
+                            "Note": "0"
                         }
                     ]
                 },
-                "Instructor": "Sarah Brown",
+                "Instructor": "Sarah Anderson",
                 "ClubSignature": null,
-                "Signatures": []
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-30T21:15:19.4408099+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-30T21:15:19.4408944+03:00"
+                    },
+                    {
+                        "Signer": "Sarah Anderson",
+                        "Timestamp": "2024-03-30T21:15:19.4408959+03:00"
+                    },
+                    {
+                        "Signer": "Signature: Deep Blue Divers",
+                        "Timestamp": "2024-03-30T21:15:19.4409623+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 324,
+                    "Description": "Underwater cave",
+                    "Perimeter": 187.19750937402057,
+                    "Depth": 39.06751664394433,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": "Deep Blue Divers",
+                "Date": "1999-05-25",
+                "EntryTime": "15:16:00",
+                "ExitTime": "15:17:00",
+                "WaterTemperature": 12,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 20,
+                            "Note": "00"
+                        },
+                        {
+                            "Name": "Camera",
+                            "Quantity": 15,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 20,
+                            "Note": "00"
+                        },
+                        {
+                            "Name": "Camera",
+                            "Quantity": 15,
+                            "Note": "0"
+                        }
+                    ]
+                },
+                "Instructor": "Amanda Garcia",
+                "ClubSignature": null,
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-30T21:33:31.2972341+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-30T21:33:31.2972423+03:00"
+                    },
+                    {
+                        "Signer": "Amanda Garcia",
+                        "Timestamp": "2024-03-30T21:33:31.2972499+03:00"
+                    },
+                    {
+                        "Signer": "Signature: Deep Blue Divers",
+                        "Timestamp": "2024-03-30T21:33:31.2974195+03:00"
+                    }
+                ]
             }
         ],
-        "Equipment": [],
-        "Ranks": []
+        "Ranks": [
+            {
+                "Description": 2,
+                "DateReceived": "2024-03-30T21:15:19.4406325+03:00",
+                "DivingClub": "Deep Blue Divers",
+                "CertificateImage": null
+            }
+        ]
     },
     "999999": {
         "FirstName": "Margo",
@@ -62,44 +269,17 @@
         "DateOfBirth": "2004-01-01T00:00:00",
         "Password": "12345678",
         "Email": "mik@mik.com",
-        "DiveLog": [
-            {
-                "DiveSite": {},
-                "DivingClubName": "Marine Explorers",
-                "Date": "2000-02-01",
-                "EntryTime": "02:05:00",
-                "ExitTime": "02:58:00",
-                "WaterTemperature": 21,
-                "WaterCondition": "High Tide",
-                "ParticipantsAndEquipment": {
-                    "test test": [],
-                    "Margo Miki": [
-                        {
-                            "Name": "Camera",
-                            "Quantity": 2,
-                            "Note": "m"
-                        }
-                    ]
-                },
-                "Instructor": "Sarah Brown",
-                "ClubSignature": null,
-                "Signatures": []
-            }
-        ],
-        "Equipment": [
-            {
-                "Name": "Camera",
-                "Quantity": 2,
-                "Note": "m"
-            }
-        ],
-        "Ranks": [
-            {
-                "Description": 2,
-                "DateReceived": "2024-03-30T16:32:56.8153565+03:00",
-                "DivingClub": "Marine Explorers",
-                "CertificateImage": null
-            }
-        ]
+        "DiveLog": [],
+        "Ranks": []
+    },
+    "111111": {
+        "FirstName": "testtttt",
+        "LastName": "testtttt",
+        "Id": "111111",
+        "DateOfBirth": "2000-02-02T00:00:00",
+        "Password": "12345678",
+        "Email": "sss@sss.com",
+        "DiveLog": [],
+        "Ranks": []
     }
 }

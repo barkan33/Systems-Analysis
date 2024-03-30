@@ -11,6 +11,10 @@ namespace Systems_Analysis
     {
         private string signer;
         private DateTime timestamp;
+
+        public string Signer { get => signer; private set => signer = value; }
+        public DateTime Timestamp { get => timestamp; private set => timestamp = value; }
+
         public Signature(string signer, DateTime timestamp)
         {
             SetSigner(signer);

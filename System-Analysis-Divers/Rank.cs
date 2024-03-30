@@ -3,12 +3,12 @@
     public class Rank
     {
         //properties for JSON file
-        public int Description { get; private set; }
+        public int Description { get; set; }
         //public int RequiredDives { get; private set; }
-        public DateTime DateReceived { get; private set; }
+        public DateTime DateReceived { get; set; }
 
-        public string DivingClub { get; private set; }
-        public string CertificateImage { get; private set; }
+        public string DivingClub { get; set; }
+        public string CertificateImage { get; set; }
 
         public string GetDescription()
         {
@@ -25,6 +25,10 @@
                 default:
                     return "";
             }
+        }
+        public Rank()
+        {
+
         }
 
         public Rank(int description, string clubName)

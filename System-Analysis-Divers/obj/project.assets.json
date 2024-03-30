@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems-Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
+      "projectUniqueName": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
       "projectName": "Systems Analysis",
-      "projectPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems-Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
+      "projectPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\Systems Analysis.csproj",
       "packagesPath": "C:\\Users\\misha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems-Analysis\\System-Analysis-Divers\\obj\\",
+      "outputPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\System-Analysis-Divers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,6 +45,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -66,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

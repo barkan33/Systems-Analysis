@@ -5,17 +5,17 @@ namespace Systems_Analysis
     public class Dive
     {
         //properties for JSON file
-        public DiveSite DiveSite { get; private set; }
+        public DiveSite DiveSite { get; set; }
         public string DivingClubName { get; private set; }
-        public DateOnly Date { get; private set; }
-        public TimeOnly EntryTime { get; private set; }
-        public TimeOnly ExitTime { get; private set; }
-        public double WaterTemperature { get; private set; }
-        public string WaterCondition { get; private set; }
-        public Dictionary<string, List<EquipmentItem>> ParticipantsAndEquipment { get; private set; }
-        public string Instructor { get; private set; }
-        public Signature ClubSignature { get; private set; }
-        public List<Signature> Signatures { get; private set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly EntryTime { get; set; }
+        public TimeOnly ExitTime { get; set; }
+        public double WaterTemperature { get; set; }
+        public string WaterCondition { get; set; }
+        public Dictionary<string, List<EquipmentItem>> ParticipantsAndEquipment { get; set; }
+        public string Instructor { get; set; }
+        public Signature ClubSignature { get; set; }
+        public List<Signature> Signatures { get; set; }
 
         //builder recieving all except participants(creating new empty list) and signatures(creating new empty list)
         public Dive(DiveSite diveSite, DivingClub divingClub, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, DivingInstructor instructor, Signature clubSignature)
@@ -33,7 +33,7 @@ namespace Systems_Analysis
             Signatures = new List<Signature>();
         }
         //builder recieving all except signatures(creating new empty list)
-        public Dive(DiveSite diveSite, DivingClub divingClub, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<Diver> divers, DivingInstructor instructor)
+        public Dive(DiveSite diveSite, DivingClub divingClub, DateOnly date, TimeOnly entryTime, TimeOnly exitTime, double waterTemperature, string waterCondition, List<EquipmentItem> equipment, List<Diver> divers, DivingInstructor instructor, List<Signature> signatures, Signature clubSignature)
         {
             DiveSite = diveSite;
             DivingClubName = divingClub.GetName();
@@ -46,18 +46,24 @@ namespace Systems_Analysis
             ParticipantsAndEquipment = new Dictionary<string, List<EquipmentItem>>();
             foreach (Diver diver in divers)
             {
-                ParticipantsAndEquipment.Add(diver.GetFirstName() + " " + diver.GetLastName(), diver.GetEquipment());
+                ParticipantsAndEquipment.Add(diver.GetFirstName() + " " + diver.GetLastName(), equipment);
             }
-            Signatures = new List<Signature>();
+            Signatures = signatures;
+            ClubSignature = clubSignature;
         }
 
+        public Dive()
+        {
+
+        }
         public new Dictionary<string, List<EquipmentItem>> GetParticipants() { return ParticipantsAndEquipment; }
         public DiveSite GetDiveSite() { return DiveSite; }
         public string GetDivingClub() { return DivingClubName; }
         public string GetInstructor() { return Instructor; }
+        public string GetDate() { return Date.Year + "-" + Date.Month + "-" + Date.Day + ": "; }
         public void AddParticipant(Diver diver)
         {
-            ParticipantsAndEquipment.Add(diver.GetFirstName() + " " + diver.GetLastName(), diver.GetEquipment());
+            ParticipantsAndEquipment.Add(diver.GetFirstName() + " " + diver.GetLastName(), new List<EquipmentItem>());
 
         }
         public void AddSignature(Signature signature)

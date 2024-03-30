@@ -9,9 +9,9 @@ namespace Systems_Analysis
     public class EquipmentItem
     {
         //properties for JSON 
-        public string Name { get; private set; }
-        public int Quantity { get; private set; }
-        public string Note { get; private set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public string Note { get; set; }
 
         public EquipmentItem(string name, int quantity, string note)
         {
@@ -24,6 +24,10 @@ namespace Systems_Analysis
             SetName(other.GetName());
             SetQuantity(other.GetQuantity());
             SetNote(other.GetNote());
+        }
+        public EquipmentItem()
+        {
+
         }
         public string GetName()
         {

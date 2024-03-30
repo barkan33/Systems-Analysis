@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -85,16 +86,16 @@ namespace Systems_Analysis
         }
         static void SaveUsersToJson()
         {
-            //try
-            //{
-            string json = JsonSerializer.Serialize(users);
-            File.WriteAllText(@".\users.json", json);
-            Console.WriteLine("User saved successfully.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"Error saving user data to JSON file: {ex.Message}");
-            //}
+            try
+            {
+                string json = JsonSerializer.Serialize(users);
+                File.WriteAllText(@".\users.json", json);
+                Console.WriteLine("User saved successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving user data to JSON file: {ex.Message}");
+            }
         }
 
         //Create all countries with their regulations
@@ -255,6 +256,8 @@ namespace Systems_Analysis
 
         private static void AddDivingPartner()
         {
+            Console.Clear();
+            Console.WriteLine(TITLE + "\n" + Topic());
             addMoreParticipants = true;
             while (addMoreParticipants)
             {
@@ -295,6 +298,8 @@ namespace Systems_Analysis
 
         private static DivingInstructor ChooseInstructor()
         {
+            Console.Clear();
+            Console.WriteLine(TITLE + "\n" + Topic());
             Console.WriteLine("Choose an instructor:\n");
             List<DivingInstructor> instructors = currentDivingClub.GetDivingInstructors();
             for (int i = 0; i < instructors.Count; i++)
@@ -314,6 +319,8 @@ namespace Systems_Analysis
 
         private static DivingClub ChooseClub()
         {
+            Console.Clear();
+            Console.WriteLine(TITLE + "\n" + Topic());
             Console.WriteLine("Choose a country:\n");
             for (int i = 0; i < countries.Count; i++)
             {
@@ -344,6 +351,8 @@ namespace Systems_Analysis
         }
         private static DiveSite ChooseDiveSite()
         {
+            Console.Clear();
+            Console.WriteLine(TITLE + "\n" + Topic());
             Console.WriteLine($"Diving sites in {currentDivingClub.GetName()}:\n");
 
             Random random = new Random();
@@ -372,22 +381,6 @@ namespace Systems_Analysis
             return chosenSite;
         }
 
-        private static void EnterClub()
-        {
-            Console.WriteLine("DivingClubs: ");
-            for (int i = 0; i < divingClubs.Count; i++)
-            {
-                Console.WriteLine(i + 1 + ".\n " + divingClubs[i]);
-            }
-            int index;
-            Console.Write("Enter your choice: ");
-            while (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > divingClubs.Count)
-            {
-                Console.WriteLine("Invalid Input for DivingClub!");
-                Console.Write("Enter your choice: ");
-            }
-            currentDivingClub = divingClubs[index - 1];
-        }
         static void DivePlanWindow()
         {
             DateOnly date = GetDateInput("Date (YYYY-MM-DD): ");
@@ -414,26 +407,33 @@ namespace Systems_Analysis
                 currentDivingClub = ChooseClub();
             }
             DiveSite diveSite = ChooseDiveSite();
-            if (divePartners.Count == 0) { AddDivingPartner(); }
+            while (divePartners.Count == 0) { AddDivingPartner(); }
             DivingInstructor instructor = ChooseInstructor();
             equipment = SelectEquipment();
-            connectedUser.SetEquipment(equipment);
-            Rank rank = new Rank(2, currentDivingClub.GetName());
-            connectedUser.AddRank(rank);
+
             //העתקת הצוללנים בשביל שהכתובת לאובייקט הציוד תיהיה שונה בין צלילה לצלילה
             List<Diver> participants = new List<Diver>();
-            foreach (Diver diver in divePartners)
+            //participants.Add(connectedUser.CreateDiverCopy());
+            participants.Add(connectedUser);
+            foreach (Diver divePartner in divePartners)
             {
-                participants.Add(diver.CreateDiverCopy());
+                //participants.Add(divePartner.CreateDiverCopy());
+                participants.Add(divePartner);
             }
-            participants.Add(connectedUser.CreateDiverCopy());
 
-            Dive dive = new Dive(diveSite, currentDivingClub, date, entryTime, exitTime, waterTemperature, waterTide, participants, instructor);
+            List<Signature> signature = new List<Signature>();
+            foreach (var participant in participants)
+            {
+                signature.Add(new Signature(participant.GetFirstName() + " " + participant.GetLastName(), DateTime.Now));
+            }
+            signature.Add(new Signature(instructor.GetFirstName() + " " + instructor.GetLastName(), DateTime.Now));
+
+            Dive dive = new Dive(diveSite, currentDivingClub, date, entryTime, exitTime, waterTemperature, waterTide, equipment, participants, instructor, signature, currentDivingClub.GetSignature());
 
             currentDivingClub.AddDive(dive);
-            connectedUser.AddDiveToLog(dive);
+            //connectedUser.AddDiveToLog(dive);
 
-            foreach (Diver diver in divePartners)
+            foreach (Diver diver in participants)
             {
                 diver.AddDiveToLog(dive);
             }
@@ -471,7 +471,9 @@ namespace Systems_Analysis
                     break;
                 }
                 EquipmentItem itemToAdd = AddEquipment(equipmentList.Keys.ElementAt(choice - 1));
-                equipment.Add(itemToAdd);
+                if (itemToAdd != null)
+                    equipment.Add(itemToAdd);
+
             }
             return equipment;
         }
@@ -728,30 +730,35 @@ namespace Systems_Analysis
         }
         static void PrintUserHistory(Diver diver)
         {
-            string tableFormat = "|{0,-18}|{1,-21}|{2,-19}|{3,-46}|\n";
+
+            Console.WriteLine(diver);//TODO
+            string tableFormat = "|{0,-17}|{1,-23}|{2,-20}|{3,-50}|\n";
             StringBuilder sb = new StringBuilder();
 
             sb.Append("+-----------------+-----------------------+--------------------+--------------------------------------------------+\n");
-            sb.Append("|   Full Name     |      Diving Site      |  Dive Instructor   |                  Equipment Taken                 |\n");
+            sb.Append("|   Full Name     |      Diving Club      |  Dive Instructor   |                  Equipment Taken                 |\n");
             sb.Append("+-----------------+-----------------------+--------------------+--------------------------------------------------+\n");
+
             List<Dive> dives = diver.GetDiveLog();
             foreach (Dive dive in dives)
             {
+                sb.AppendLine(dive.GetDate());
                 string fullName = diver.GetFirstName() + " " + diver.GetLastName();
-                string divingClub = dive.GetDivingClub();
+                string divingClub = dive.GetDiveSite().GetDescription();
                 string diveInstructor = dive.GetInstructor();
                 string equipmentListString = "";
 
                 foreach (var item in dive.GetParticipants())
                 {
                     fullName = item.Key;
-                    divingClub = dive.GetDivingClub();
+                    divingClub = dive.GetDiveSite().GetDescription();
                     diveInstructor = dive.GetInstructor();
+                    equipmentListString = "";
                     foreach (EquipmentItem equipment in item.Value)
                         equipmentListString += equipment.GetName() + " (" + equipment.GetQuantity() + ") ";
+                    sb.AppendFormat(tableFormat, fullName, divingClub, diveInstructor, equipmentListString);
+                    sb.AppendLine();
                 }
-                sb.AppendFormat(tableFormat, fullName, divingClub, diveInstructor, equipmentListString);
-                sb.AppendLine();
 
 
             }
@@ -767,10 +774,10 @@ namespace Systems_Analysis
                 Console.Clear();
                 Console.WriteLine(TITLE + "\n" + Topic());
                 //top user indicator
-                string secondMenu = $"Welcome {connectedUser.GetFirstName()},\n1. Plan Your Dive\n2. Enter DiveClub\n3. Add Diving Partner/s\n4. Display Diving regulations By Country\n5. Logout and return Main Menu";
+                string secondMenu = $"Welcome {connectedUser.GetFirstName()},\n1. Plan Your Dive\n2. Enter DiveClub\n3. Add Diving Partner/s\n4. Display Diving regulations By Country\n5. Logout and return Main Menu\n6. Set New Rank";
                 if (connectedUser.GetDiveLog().Count >= 1)
                 {
-                    secondMenu += "\n6. Show Dive History";
+                    secondMenu += "\n7. Show Dive History";
                 }
                 Console.WriteLine(secondMenu);
 
@@ -788,7 +795,7 @@ namespace Systems_Analysis
                         DivePlanWindow();
                         break;
                     case 2:
-                        EnterClub();
+                        currentDivingClub = ChooseClub();
                         break;
                     case 3:
                         AddDivingPartner();
@@ -802,9 +809,16 @@ namespace Systems_Analysis
                         connectedUser = null;
                         return;
                     case 6:
+                        //TODO
+                        Rank rank = new Rank(2, currentDivingClub.GetName());
+                        connectedUser.AddRank(rank);
+                        break;
+                    case 7:
                         if (connectedUser == null || connectedUser.GetDiveLog().Count == 0)
                         {
                             Console.WriteLine("No Dive History");
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
                             break;
                         }
                         PrintUserHistory(connectedUser);
@@ -827,7 +841,6 @@ namespace Systems_Analysis
             CreateCountries();
             CreateDiveSites();
             CreateDivingClubs();
-            //CreateDivingInstructors();
 
 
             //Main loop

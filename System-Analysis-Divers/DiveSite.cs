@@ -14,6 +14,12 @@ namespace Systems_Analysis
         private double depth;
         private string waterType;
 
+        public int Code { get => code; private set => code = value; }
+        public string Description { get => description; private set => description = value; }
+        public double Perimeter { get => perimeter; private set => perimeter = value; }
+        public double Depth { get => depth; private set => depth = value; }
+        public string WaterType { get => waterType; private set => waterType = value; }
+
         public DiveSite(int code, string description, double perimeter, double depth, string waterType)
         {
             SetName(code);
@@ -21,10 +27,6 @@ namespace Systems_Analysis
             SetPerimeter(perimeter);
             SetDepth(depth);
             SetWaterType(waterType);
-        }
-
-        public DiveSite(DiveSite diveSite)
-        {
         }
 
         public int GetName() { return code; }

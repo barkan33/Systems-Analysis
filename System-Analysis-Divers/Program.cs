@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Transactions;
 
 namespace Systems_Analysis
 {
@@ -20,7 +16,7 @@ namespace Systems_Analysis
         static List<Diver> divePartners = new List<Diver>();
         static List<DivingClub> divingClubs;
         static List<DiveSite> diveSites;
-        static List<DivingInstructor> instructors;
+        //static List<DivingInstructor> instructors;
         static List<Country> countries;
 
         static Random random = new Random();
@@ -89,16 +85,16 @@ namespace Systems_Analysis
         }
         static void SaveUsersToJson()
         {
-            try
-            {
-                string json = JsonSerializer.Serialize(users);
-                File.WriteAllText(@".\users.json", json);
-                Console.WriteLine("User saved successfully.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error saving user data to JSON file: {ex.Message}");
-            }
+            //try
+            //{
+            string json = JsonSerializer.Serialize(users);
+            File.WriteAllText(@".\users.json", json);
+            Console.WriteLine("User saved successfully.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Error saving user data to JSON file: {ex.Message}");
+            //}
         }
 
         //Create all countries with their regulations
@@ -119,24 +115,55 @@ namespace Systems_Analysis
             divingClubs = new List<DivingClub>();
             //some fake data to work with
             const int ARR_LEN = 10;
-            string[] names = ["Deep Blue Divers" , "Coral Reef Diving", "Aqua Adventures", "Marine Explorers",
-                              "Ocean Quest", "Oceanic Odyssey", "Dive Master Academy", "Seabed Seekers",
-                              "Tidal Titans", "Sunken Treasure Divers"];
-            string[] addresses = ["123 Ocean Drive", "456 Coral Lane", "789 Reef Road", "1011 Seabed Street",
-                                  "1213 Dive Drive", "1415 Oceanic Avenue", "1617 Treasure Trail", "1819 Atlantis Avenue",
-                                  "2021 Shipwreck Street", "2223 Dive Drive"];
-            string[] contactPersons = ["John Doe", "Jane Doe", "Jack Black", "Jill White", "Jim Brown",
-                                       "Jenny Green", "Joe Blue", "Jill Red", "Jack Yellow", "Jill Pink"];
-            string[] phoneNumbers = ["+1234567890", "+2345678901", "+3456789012", "+4567890123", "+5678901234",
-                                    "+6789012345", "+7890123456", "+8901234567", "+9012345678", "+0123456789" ];
+            string[] names = ["Deep Blue Divers",
+                "Coral Reef Diving",
+                "Aqua Adventures",
+                "Marine Explorers",
+                "Ocean Quest",
+                "Oceanic Odyssey",
+                "Dive Master Academy",
+                "Seabed Seekers",
+                "Tidal Titans",
+                "Sunken Treasure Divers"];
+            string[] addresses = ["123 Ocean Drive",
+                "456 Coral Lane",
+                "789 Reef Road",
+                "1011 Seabed Street",
+                "1213 Dive Drive",
+                "1415 Oceanic Avenue",
+                "1617 Treasure Trail",
+                "1819 Atlantis Avenue",
+                "2021 Shipwreck Street",
+                "2223 Dive Drive"];
+            string[] contactPersons = ["John Doe",
+                "Jane Doe",
+                "Jack Black",
+                "Jill White",
+                "Jim Brown",
+                "Jenny Green",
+                "Joe Blue",
+                "Jill Red",
+                "Jack Yellow",
+                "Jill Pink"];
+            string[] phoneNumbers = ["+1234567890",
+                "+2345678901",
+                "+3456789012",
+                "+4567890123",
+                "+5678901234",
+                "+6789012345",
+                "+7890123456",
+                "+8901234567",
+                "+9012345678",
+                "+0123456789"];
 
             for (int i = 0; i < ARR_LEN; i++)
             {
                 List<DiveSite> sites = new List<DiveSite>();
                 sites.Add(diveSites[i + 1]);
                 sites.Add(diveSites[i + 2]);
-                divingClubs.Add(new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i], addresses[i], countries[random.Next(countries.Count)],
-                    phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com", sites));
+                DivingClub club = new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i], addresses[i], countries[random.Next(countries.Count)], phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com", sites);
+                club.SetDivingInstructors(CreateDivingInstructors());
+                divingClubs.Add(club);
             }
         }
 
@@ -146,11 +173,26 @@ namespace Systems_Analysis
             diveSites = new List<DiveSite>();
             string[] descriptions =
                     [
-                            "Beautiful coral reef", "Sunken shipwreck", "Underwater cave", "Colorful fish",
-                         "Giant kelp forest", "Manta ray cleaning station", "Shark feeding site", "Whale migration route",
-                            "Seagrass meadow", "Deep ocean trench", "Volcanic underwater vent", "Pristine sandy bottom",
-                            "Underwater mountain", "Underwater canyon", "Underwater waterfall",
-                            "Coral garden", "Lagoon dive", "Wall dive", "Night dive", "Drift dive"
+                            "Beautiful coral reef",
+                        "Sunken shipwreck",
+                        "Underwater cave",
+                        "Colorful fish",
+                        "Giant kelp forest",
+                        "Manta ray cleaning station",
+                        "Shark feeding site",
+                        "Whale migration route",
+                        "Seagrass meadow",
+                        "Deep ocean trench",
+                        "Volcanic underwater vent",
+                        "Pristine sandy bottom",
+                        "Underwater mountain",
+                        "Underwater canyon",
+                        "Underwater waterfall",
+                        "Coral garden",
+                        "Lagoon dive",
+                        "Wall dive",
+                        "Night dive",
+                        "Drift dive"
                     ];
 
             string[] waterTypes = ["Saltwater", "Freshwater"];
@@ -171,25 +213,17 @@ namespace Systems_Analysis
             }
         }
         //create diving instructors
-        static void CreateDivingInstructors()
+        static List<DivingInstructor> CreateDivingInstructors()
         {
-            instructors = new List<DivingInstructor>();
-            string[] instructorNames = [
-                        "John Smith",
-                        "Emily Johnson",
-                        "Michael Brown",
-                        "Sarah Wilson",
-                        "David Martinez",
-                        "Jennifer Davis",
-                        "Christopher Anderson",
-                        "Jessica Thompson",
-                        "Matthew Garcia",
-                        "Amanda Harris"];
-            for (int i = 0; i < 5; i++)
-            {
-                instructors.Add(new DivingInstructor(instructorNames[i], random.Next(18, 60), random.Next(123456, 987654).ToString(), DateTime.Now, "password", $"{instructorNames[i].Trim()}@nomail.com"));
-            }
+            List<DivingInstructor> newInstructors = new List<DivingInstructor>();
+            string[] instructorNames = ["John", "Emily", "Michael", "Sarah", "David", "Jennifer", "Christopher", "Jessica", "Matthew", "Amanda"];
+            string[] instructorLastName = ["Smith", "Johnson", "Brown", "Wilson", "Martinez", "Davis", "Anderson", "Thompson", "Garcia", "Harris"];
 
+            for (int i = 0; i < random.Next(2, 6); i++)
+            {
+                newInstructors.Add(new DivingInstructor(instructorNames[random.Next(0, instructorNames.Length)], instructorLastName[random.Next(0, instructorLastName.Length)], random.Next(18, 60), random.Next(123456, 987654).ToString(), DateTime.Now, "password", $"{instructorNames[i].Trim()}@nomail.com"));
+            }
+            return newInstructors;
         }
 
         private static void DivingRegulations()
@@ -242,12 +276,11 @@ namespace Systems_Analysis
                     Console.WriteLine("Participant Not Found!");
                 }
 
-                Console.Write("Do you want to add another participant? (y/n): ");
                 char response;
                 do
                 {
-                    response = Console.ReadLine().ToLower()[0];
-                } while (response != 'y' && response != 'n');
+                    Console.Write("Do you want to add another participant? (y/n): ");
+                } while (!char.TryParse(Console.ReadLine(), out response));
 
                 addMoreParticipants = response == 'y';
             }
@@ -263,6 +296,7 @@ namespace Systems_Analysis
         private static DivingInstructor ChooseInstructor()
         {
             Console.WriteLine("Choose an instructor:\n");
+            List<DivingInstructor> instructors = currentDivingClub.GetDivingInstructors();
             for (int i = 0; i < instructors.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {instructors[i]}");
@@ -359,7 +393,18 @@ namespace Systems_Analysis
             DateOnly date = GetDateInput("Date (YYYY-MM-DD): ");
             TimeOnly entryTime = GetTimeInput("Entry Time (HH:MM): ");
             TimeOnly exitTime = GetTimeInput("Exit Time (HH:MM): ");
+            while (exitTime <= entryTime)
+            {
+                Console.WriteLine("Invalid Exit Time");
+                exitTime = GetTimeInput("Exit Time (HH:MM): ");
+
+            }
             double waterTemperature = GetDoubleInput("Water Temperature: ");
+            while (waterTemperature < 1 || waterTemperature > 40)
+            {
+                Console.WriteLine("Invalid Water Temperature");
+                waterTemperature = GetDoubleInput("Water Temperature: ");
+            }
             string waterTide = GetWaterTideInput("Enter Tide : 0 = low, 1 = high ");
             List<EquipmentItem> equipment;
 
@@ -369,10 +414,12 @@ namespace Systems_Analysis
                 currentDivingClub = ChooseClub();
             }
             DiveSite diveSite = ChooseDiveSite();
+            if (divePartners.Count == 0) { AddDivingPartner(); }
             DivingInstructor instructor = ChooseInstructor();
             equipment = SelectEquipment();
             connectedUser.SetEquipment(equipment);
-
+            Rank rank = new Rank(2, currentDivingClub.GetName());
+            connectedUser.AddRank(rank);
             //העתקת הצוללנים בשביל שהכתובת לאובייקט הציוד תיהיה שונה בין צלילה לצלילה
             List<Diver> participants = new List<Diver>();
             foreach (Diver diver in divePartners)
@@ -381,7 +428,7 @@ namespace Systems_Analysis
             }
             participants.Add(connectedUser.CreateDiverCopy());
 
-            Dive dive = new Dive(diveSite, date, entryTime, exitTime, waterTemperature, waterTide, participants, instructor);
+            Dive dive = new Dive(diveSite, currentDivingClub, date, entryTime, exitTime, waterTemperature, waterTide, participants, instructor);
 
             currentDivingClub.AddDive(dive);
             connectedUser.AddDiveToLog(dive);
@@ -390,8 +437,10 @@ namespace Systems_Analysis
             {
                 diver.AddDiveToLog(dive);
             }
-
-            Console.WriteLine("Dive added successfully!");
+            Console.WriteLine($"{instructor.GetFirstName()} accept your dive!");
+            SaveUsersToJson();
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
 
         private static List<EquipmentItem> SelectEquipment()
@@ -438,6 +487,7 @@ namespace Systems_Analysis
             string note = "";
             try
             {
+                Console.Write("Note: ");
                 note = Console.ReadLine();
             }
             catch (FormatException) { }
@@ -676,6 +726,39 @@ namespace Systems_Analysis
                 Console.WriteLine("--------------------");
             }
         }
+        static void PrintUserHistory(Diver diver)
+        {
+            string tableFormat = "|{0,-18}|{1,-21}|{2,-19}|{3,-46}|\n";
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("+-----------------+-----------------------+--------------------+--------------------------------------------------+\n");
+            sb.Append("|   Full Name     |      Diving Site      |  Dive Instructor   |                  Equipment Taken                 |\n");
+            sb.Append("+-----------------+-----------------------+--------------------+--------------------------------------------------+\n");
+            List<Dive> dives = diver.GetDiveLog();
+            foreach (Dive dive in dives)
+            {
+                string fullName = diver.GetFirstName() + " " + diver.GetLastName();
+                string divingClub = dive.GetDivingClub();
+                string diveInstructor = dive.GetInstructor();
+                string equipmentListString = "";
+
+                foreach (var item in dive.GetParticipants())
+                {
+                    fullName = item.Key;
+                    divingClub = dive.GetDivingClub();
+                    diveInstructor = dive.GetInstructor();
+                    foreach (EquipmentItem equipment in item.Value)
+                        equipmentListString += equipment.GetName() + " (" + equipment.GetQuantity() + ") ";
+                }
+                sb.AppendFormat(tableFormat, fullName, divingClub, diveInstructor, equipmentListString);
+                sb.AppendLine();
+
+
+            }
+
+            sb.Append("+------------------+---------------------+--------------------+--------------------------------------------------+\n");
+            Console.WriteLine(sb.ToString());
+        }
 
         static void SecondScreen()
         {
@@ -719,8 +802,14 @@ namespace Systems_Analysis
                         connectedUser = null;
                         return;
                     case 6:
-                        //DIVE HISTORY 
+                        if (connectedUser == null || connectedUser.GetDiveLog().Count == 0)
+                        {
+                            Console.WriteLine("No Dive History");
+                            break;
+                        }
                         PrintUserHistory(connectedUser);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("Invalid Input, Try Again");
@@ -729,16 +818,6 @@ namespace Systems_Analysis
             }
         }
 
-        private static void PrintUserHistory(Diver connectedUser)
-        {
-            StringBuilder sb = new StringBuilder();
-            //TODO
-            //שם
-
-            //דרגה
-            //:צלילות
-            //
-        }
 
         static void Main()
         {
@@ -748,7 +827,7 @@ namespace Systems_Analysis
             CreateCountries();
             CreateDiveSites();
             CreateDivingClubs();
-            CreateDivingInstructors();
+            //CreateDivingInstructors();
 
 
             //Main loop

@@ -28,8 +28,78 @@
         "DateOfBirth": "2000-01-01T00:00:00",
         "Password": "12345678",
         "Email": "qwe@qwe.com",
-        "DiveLog": [],
+        "DiveLog": [
+            {
+                "DiveSite": {},
+                "DivingClubName": "Marine Explorers",
+                "Date": "2000-02-01",
+                "EntryTime": "02:05:00",
+                "ExitTime": "02:58:00",
+                "WaterTemperature": 21,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [],
+                    "Margo Miki": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 2,
+                            "Note": "m"
+                        }
+                    ]
+                },
+                "Instructor": "Sarah Brown",
+                "ClubSignature": null,
+                "Signatures": []
+            }
+        ],
         "Equipment": [],
         "Ranks": []
+    },
+    "999999": {
+        "FirstName": "Margo",
+        "LastName": "Miki",
+        "Id": "999999",
+        "DateOfBirth": "2004-01-01T00:00:00",
+        "Password": "12345678",
+        "Email": "mik@mik.com",
+        "DiveLog": [
+            {
+                "DiveSite": {},
+                "DivingClubName": "Marine Explorers",
+                "Date": "2000-02-01",
+                "EntryTime": "02:05:00",
+                "ExitTime": "02:58:00",
+                "WaterTemperature": 21,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [],
+                    "Margo Miki": [
+                        {
+                            "Name": "Camera",
+                            "Quantity": 2,
+                            "Note": "m"
+                        }
+                    ]
+                },
+                "Instructor": "Sarah Brown",
+                "ClubSignature": null,
+                "Signatures": []
+            }
+        ],
+        "Equipment": [
+            {
+                "Name": "Camera",
+                "Quantity": 2,
+                "Note": "m"
+            }
+        ],
+        "Ranks": [
+            {
+                "Description": 2,
+                "DateReceived": "2024-03-30T16:32:56.8153565+03:00",
+                "DivingClub": "Marine Explorers",
+                "CertificateImage": null
+            }
+        ]
     }
 }

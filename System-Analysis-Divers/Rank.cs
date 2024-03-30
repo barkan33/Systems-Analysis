@@ -1,39 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Systems_Analysis
+﻿namespace Systems_Analysis
 {
     public class Rank
     {
         //properties for JSON file
-        public string Description { get; private set; }
-        public int RequiredDives { get; private set; }
+        public int Description { get; private set; }
+        //public int RequiredDives { get; private set; }
         public DateTime DateReceived { get; private set; }
-        public DivingClub IssuingClub { get; private set; }
+
+        public string DivingClub { get; private set; }
         public string CertificateImage { get; private set; }
 
         public string GetDescription()
         {
-            return Description;
+            switch (Description)
+            {
+                case 0:
+                    return "One Star";
+                case 1:
+                    return "Two Star";
+                case 2:
+                    return "InstructorAssistant";
+                case 3:
+                    return "Instructor";
+                default:
+                    return "";
+            }
         }
 
-        public void SetDescription(string description)
+        public Rank(int description, string clubName)
+        {
+            while (description < 0 || description > 3)
+            {
+                do
+                {
+                    Console.WriteLine("Invalid Rank (0-3)");
+                } while (!int.TryParse(Console.ReadLine(), out description));
+            }
+            SetDescription(description);
+            SetDateReceived(DateTime.Now);
+            SetIssuingClub(clubName);
+        }
+        public void SetDescription(int description)
         {
             Description = description;
         }
 
-        public int GetRequiredDives()
-        {
-            return RequiredDives;
-        }
+        //public int GetRequiredDives()
+        //{
+        //    return RequiredDives;
+        //}
 
-        public void SetRequiredDives(int requiredDives)
-        {
-            RequiredDives = requiredDives;
-        }
+        //public void SetRequiredDives(int requiredDives)
+        //{
+        //    RequiredDives = requiredDives;
+        //}
 
         public DateTime GetDateReceived()
         {
@@ -45,14 +65,14 @@ namespace Systems_Analysis
             DateReceived = dateReceived;
         }
 
-        public DivingClub GetIssuingClub()
+        public string GetIssuingClub()
         {
-            return IssuingClub;
+            return DivingClub;
         }
 
-        public void SetIssuingClub(DivingClub issuingClub)
+        public void SetIssuingClub(string clubName)
         {
-            IssuingClub = issuingClub;
+            DivingClub = clubName;
         }
 
         public string GetCertificateImage()
@@ -66,7 +86,7 @@ namespace Systems_Analysis
         }
         public override string ToString()
         {
-            return $"DivingClub: {IssuingClub} - {Description}";
+            return $"DivingClub: {DivingClub} - {Description}";
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Systems_Analysis
 {
@@ -45,6 +40,7 @@ namespace Systems_Analysis
         private void SetEmail(string email) { this.email = email; }
         private void SetWebsite(string website) { this.website = website; }
         private void AddDivingInstructors(DivingInstructor instructor) { instructors.Add(instructor); }
+        public void SetDivingInstructors(List<DivingInstructor> instructors) { this.instructors = instructors; }
         private void AddDiveSites(DiveSite diveSite) { diveSites.Add(diveSite); }
         public void AddDive(Dive log) { diveLog.Add(log); }
 

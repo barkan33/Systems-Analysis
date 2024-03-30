@@ -19,6 +19,12 @@ namespace Systems_Analysis
             SetQuantity(quantity);
             SetNote(note);
         }
+        public EquipmentItem(EquipmentItem other)
+        {
+            SetName(other.GetName());
+            SetQuantity(other.GetQuantity());
+            SetNote(other.GetNote());
+        }
         public string GetName()
         {
             return Name;
@@ -47,6 +53,10 @@ namespace Systems_Analysis
         public void SetNote(string note)
         {
             Note = note;
+        }
+        public override string ToString()
+        {
+            return $"Name: {Name} ({Quantity})";
         }
     }
 }

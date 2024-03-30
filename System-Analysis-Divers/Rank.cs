@@ -64,5 +64,9 @@ namespace Systems_Analysis
         {
             CertificateImage = certificateImage;
         }
+        public override string ToString()
+        {
+            return $"DivingClub: {IssuingClub} - {Description}";
+        }
     }
 }

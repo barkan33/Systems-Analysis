@@ -67,7 +67,7 @@ namespace Systems_Analysis
             sb.Append("Exit Time: ");
             sb.AppendLine(ExitTime.ToString());
             sb.Append("Water Temperature: ");
-            sb.AppendLine(WaterTemperature.ToString());
+            sb.AppendLine(WaterTemperature.ToString());//TODO maybe ${WaterTemperature:F2}
             sb.Append("Water Condition: ");
             sb.AppendLine(WaterCondition);
             sb.Append("Instructor: ");
@@ -78,6 +78,7 @@ namespace Systems_Analysis
             foreach (Diver diver in Participants)
             {
                 sb.AppendLine(diver.GetFirstName() + " " + diver.GetLastName());
+                sb.AppendLine(diver.GetEquipmentToString());
             }
             sb.Append("Signatures: ");
             foreach (Signature signature in Signatures)

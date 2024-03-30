@@ -1,1 +1,35 @@
-{"123456":{"FirstName":"Serg","LastName":"Birarov","Id":"123456","DateOfBirth":"1996-07-26T00:00:00","Password":"12345678","Email":"ser@mail.com","DiveLog":[],"Equipment":[],"Ranks":[]},"112345":{"FirstName":"Misha","LastName":"gg","Id":"112345","DateOfBirth":"2000-05-11T00:00:00","Password":"12345678","Email":"fj@mail.com","DiveLog":[],"Equipment":[],"Ranks":[]}}
+{
+    "123456": {
+        "FirstName": "Serg",
+        "LastName": "Birarov",
+        "Id": "123456",
+        "DateOfBirth": "1996-07-26T00:00:00",
+        "Password": "12345678",
+        "Email": "ser@mail.com",
+        "DiveLog": [],
+        "Equipment": [],
+        "Ranks": []
+    },
+    "112345": {
+        "FirstName": "Misha",
+        "LastName": "gg",
+        "Id": "112345",
+        "DateOfBirth": "2000-05-11T00:00:00",
+        "Password": "12345678",
+        "Email": "fj@mail.com",
+        "DiveLog": [],
+        "Equipment": [],
+        "Ranks": []
+    },
+    "000000": {
+        "FirstName": "test",
+        "LastName": "test",
+        "Id": "000000",
+        "DateOfBirth": "2000-01-01T00:00:00",
+        "Password": "12345678",
+        "Email": "qwe@qwe.com",
+        "DiveLog": [],
+        "Equipment": [],
+        "Ranks": []
+    }
+}

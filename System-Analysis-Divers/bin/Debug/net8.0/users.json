@@ -7,7 +7,7 @@
         "Password": "12345678",
         "Email": "ser@mail.com",
         "DiveLog": [],
-        "Ranks": []
+        "Ranks": {}
     },
     "112345": {
         "FirstName": "Misha",
@@ -61,10 +61,6 @@
                     {
                         "Signer": "Sarah Anderson",
                         "Timestamp": "2024-03-30T21:15:19.4408959+03:00"
-                    },
-                    {
-                        "Signer": "Signature: Deep Blue Divers",
-                        "Timestamp": "2024-03-30T21:15:19.4409623+03:00"
                     }
                 ]
             },
@@ -76,7 +72,7 @@
                     "Depth": 39.06751664394433,
                     "WaterType": "Saltwater"
                 },
-                "DivingClubName": "Deep Blue Divers",
+                "DivingClubName": null,
                 "Date": "1999-05-25",
                 "EntryTime": "15:16:00",
                 "ExitTime": "15:17:00",
@@ -122,15 +118,131 @@
                     {
                         "Signer": "Amanda Garcia",
                         "Timestamp": "2024-03-30T21:33:31.2972499+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 520,
+                    "Description": "Manta ray cleaning station",
+                    "Perimeter": 365.3855760587528,
+                    "Depth": 37.31022456492005,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": null,
+                "Date": "2024-02-05",
+                "EntryTime": "15:16:00",
+                "ExitTime": "16:17:00",
+                "WaterTemperature": 13,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": "0"
+                        }
+                    ]
+                },
+                "Instructor": "Jessica Anderson",
+                "ClubSignature": {
+                    "Signer": "Signature: Marine Explorers",
+                    "Timestamp": "2024-03-31T10:25:17.3746059+03:00"
+                },
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-31T10:25:17.3744654+03:00"
                     },
                     {
-                        "Signer": "Signature: Deep Blue Divers",
-                        "Timestamp": "2024-03-30T21:33:31.2974195+03:00"
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-31T10:25:17.3744729+03:00"
+                    },
+                    {
+                        "Signer": "Jessica Anderson",
+                        "Timestamp": "2024-03-31T10:25:17.374479+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 283,
+                    "Description": "Underwater cave",
+                    "Perimeter": 256.64789295303206,
+                    "Depth": 32.23041926350183,
+                    "WaterType": "Freshwater"
+                },
+                "DivingClubName": "Coral Reef Diving",
+                "Date": "2024-02-02",
+                "EntryTime": "15:15:00",
+                "ExitTime": "16:16:00",
+                "WaterTemperature": 12,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Dive Suit",
+                            "Quantity": 3,
+                            "Note": ""
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Dive Suit",
+                            "Quantity": 3,
+                            "Note": ""
+                        }
+                    ]
+                },
+                "Instructor": "Christopher Garcia",
+                "ClubSignature": {
+                    "Signer": " Coral Reef Diving",
+                    "Timestamp": "2024-03-31T10:31:46.8579036+03:00"
+                },
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-31T10:31:46.8577651+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-31T10:31:46.8577727+03:00"
+                    },
+                    {
+                        "Signer": "Christopher Garcia",
+                        "Timestamp": "2024-03-31T10:31:46.8577738+03:00"
                     }
                 ]
             }
         ],
-        "Ranks": []
+        "Ranks": {}
     },
     "000000": {
         "FirstName": "test",
@@ -184,10 +296,6 @@
                     {
                         "Signer": "Sarah Anderson",
                         "Timestamp": "2024-03-30T21:15:19.4408959+03:00"
-                    },
-                    {
-                        "Signer": "Signature: Deep Blue Divers",
-                        "Timestamp": "2024-03-30T21:15:19.4409623+03:00"
                     }
                 ]
             },
@@ -199,7 +307,7 @@
                     "Depth": 39.06751664394433,
                     "WaterType": "Saltwater"
                 },
-                "DivingClubName": "Deep Blue Divers",
+                "DivingClubName": null,
                 "Date": "1999-05-25",
                 "EntryTime": "15:16:00",
                 "ExitTime": "15:17:00",
@@ -245,22 +353,138 @@
                     {
                         "Signer": "Amanda Garcia",
                         "Timestamp": "2024-03-30T21:33:31.2972499+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 520,
+                    "Description": "Manta ray cleaning station",
+                    "Perimeter": 365.3855760587528,
+                    "Depth": 37.31022456492005,
+                    "WaterType": "Saltwater"
+                },
+                "DivingClubName": null,
+                "Date": "2024-02-05",
+                "EntryTime": "15:16:00",
+                "ExitTime": "16:17:00",
+                "WaterTemperature": 13,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": "0"
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": "0"
+                        }
+                    ]
+                },
+                "Instructor": "Jessica Anderson",
+                "ClubSignature": {
+                    "Signer": "Signature: Marine Explorers",
+                    "Timestamp": "2024-03-31T10:25:17.3746059+03:00"
+                },
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-31T10:25:17.3744654+03:00"
                     },
                     {
-                        "Signer": "Signature: Deep Blue Divers",
-                        "Timestamp": "2024-03-30T21:33:31.2974195+03:00"
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-31T10:25:17.3744729+03:00"
+                    },
+                    {
+                        "Signer": "Jessica Anderson",
+                        "Timestamp": "2024-03-31T10:25:17.374479+03:00"
+                    }
+                ]
+            },
+            {
+                "DiveSite": {
+                    "Code": 283,
+                    "Description": "Underwater cave",
+                    "Perimeter": 256.64789295303206,
+                    "Depth": 32.23041926350183,
+                    "WaterType": "Freshwater"
+                },
+                "DivingClubName": "Coral Reef Diving",
+                "Date": "2024-02-02",
+                "EntryTime": "15:15:00",
+                "ExitTime": "16:16:00",
+                "WaterTemperature": 12,
+                "WaterCondition": "High Tide",
+                "ParticipantsAndEquipment": {
+                    "test test": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Dive Suit",
+                            "Quantity": 3,
+                            "Note": ""
+                        }
+                    ],
+                    "Misha gg": [
+                        {
+                            "Name": "Knife",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Compass",
+                            "Quantity": 2,
+                            "Note": ""
+                        },
+                        {
+                            "Name": "Dive Suit",
+                            "Quantity": 3,
+                            "Note": ""
+                        }
+                    ]
+                },
+                "Instructor": "Christopher Garcia",
+                "ClubSignature": {
+                    "Signer": " Coral Reef Diving",
+                    "Timestamp": "2024-03-31T10:31:46.8579036+03:00"
+                },
+                "Signatures": [
+                    {
+                        "Signer": "test test",
+                        "Timestamp": "2024-03-31T10:31:46.8577651+03:00"
+                    },
+                    {
+                        "Signer": "Misha gg",
+                        "Timestamp": "2024-03-31T10:31:46.8577727+03:00"
+                    },
+                    {
+                        "Signer": "Christopher Garcia",
+                        "Timestamp": "2024-03-31T10:31:46.8577738+03:00"
                     }
                 ]
             }
         ],
-        "Ranks": [
-            {
-                "Description": 2,
-                "DateReceived": "2024-03-30T21:15:19.4406325+03:00",
-                "DivingClub": "Deep Blue Divers",
+        "Ranks": {
+            "Ocean Quest": {
+                "Description": 3,
+                "DivingClub": "Ocean Quest",
+                "DateReceived": "2024-03-31T10:01:55.8111043+03:00",
                 "CertificateImage": null
             }
-        ]
+        }
     },
     "999999": {
         "FirstName": "Margo",
@@ -270,7 +494,7 @@
         "Password": "12345678",
         "Email": "mik@mik.com",
         "DiveLog": [],
-        "Ranks": []
+        "Ranks": {}
     },
     "111111": {
         "FirstName": "testtttt",
@@ -280,6 +504,6 @@
         "Password": "12345678",
         "Email": "sss@sss.com",
         "DiveLog": [],
-        "Ranks": []
+        "Ranks": {}
     }
 }

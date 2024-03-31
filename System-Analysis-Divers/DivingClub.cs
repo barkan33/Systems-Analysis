@@ -29,7 +29,7 @@ namespace Systems_Analysis
         public List<DivingInstructor> GetDivingInstructors() { return instructors; }
         public List<DiveSite> GetDiveSites() { return diveSites; }
         public List<Dive> GetDiveLogs() { return diveLog; }
-        public Signature GetSignature() { return new Signature($"Signature: {name}", DateTime.Now); }
+        public Signature GetSignature() { return new Signature($" {name}", DateTime.Now); }
 
         private void SetName(string name) { this.name = name; }
         private void SetLicenseNumber(string licenseNumber) { this.licenseNumber = licenseNumber; }

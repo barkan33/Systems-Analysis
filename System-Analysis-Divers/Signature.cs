@@ -12,6 +12,7 @@ namespace Systems_Analysis
         private string signer;
         private DateTime timestamp;
 
+        //properties for JSON file
         public string Signer { get => signer; private set => signer = value; }
         public DateTime Timestamp { get => timestamp; private set => timestamp = value; }
 
@@ -40,6 +41,10 @@ namespace Systems_Analysis
         public void SetTimestamp(DateTime timestamp)
         {
             this.timestamp = timestamp;
+        }
+        public override string ToString()
+        {
+            return signer + " " + timestamp;
         }
     }
 }

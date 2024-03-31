@@ -90,18 +90,24 @@ namespace Systems_Analysis
             sb.Append("Instructor: ");
             sb.AppendLine(Instructor);
             sb.Append("Club Signature: ");
-            sb.AppendLine(ClubSignature.ToString());
-            sb.Append("Participants: ");
+            if (ClubSignature != null)
+                sb.AppendLine(ClubSignature.ToString());
+            else
+                sb.AppendLine("No ClubSignature");
+
+            sb.AppendLine("Participants: ");
             foreach (var item in ParticipantsAndEquipment)
             {
                 sb.AppendLine(item.Key);
             }
-            sb.Append("Signatures: ");
+            sb.AppendLine("Signatures: ");
             foreach (Signature signature in Signatures)
             {
                 sb.AppendLine(signature.ToString());
             }
             sb.Append('*', 20);
+            sb.AppendLine();
+
             return sb.ToString();
         }
     }

@@ -4,23 +4,22 @@
     {
         //properties for JSON file
         public int Description { get; set; }
-        //public int RequiredDives { get; private set; }
+        public string DivingClub { get; set; }
         public DateTime DateReceived { get; set; }
 
-        public string DivingClub { get; set; }
         public string CertificateImage { get; set; }
 
         public string GetDescription()
         {
             switch (Description)
             {
-                case 0:
-                    return "One Star";
                 case 1:
-                    return "Two Stars";
+                    return "One Star";
                 case 2:
-                    return "InstructorAssistant";
+                    return "Two Stars";
                 case 3:
+                    return "InstructorAssistant";
+                case 4:
                     return "Instructor";
                 default:
                     return "";
@@ -33,11 +32,11 @@
 
         public Rank(int description, string clubName)
         {
-            while (description < 0 || description > 3)
+            while (description < 1 || description > 4)
             {
                 do
                 {
-                    Console.WriteLine("Invalid Rank (0-3)");
+                    Console.WriteLine("Invalid Rank (1-4)");
                 } while (!int.TryParse(Console.ReadLine(), out description));
             }
             SetDescription(description);

@@ -66,7 +66,7 @@ namespace Systems_Analysis
         }
 
 
-        //json handling for users and dives 
+        //json handling for users and str 
         static void LoadUsersFromJson()
         {
             try
@@ -81,6 +81,7 @@ namespace Systems_Analysis
             catch (JsonException)
             {
                 Console.WriteLine("Error loading user data from JSON file. Using an empty user dictionary.");
+                Console.ReadKey();
                 users = new Dictionary<string, Diver>();
             }
         }
@@ -163,7 +164,11 @@ namespace Systems_Analysis
                 sites.Add(diveSites[i + 1]);
                 sites.Add(diveSites[i + 2]);
                 DivingClub club = new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i], addresses[i], countries[random.Next(countries.Count)], phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com", sites);
-                club.SetDivingInstructors(CreateDivingInstructors());
+                List<DivingInstructor> instructors = CreateDivingInstructors();
+                foreach (DivingInstructor instructor in instructors)
+                    instructor.AddRank(new Rank(4, club.GetName()));
+
+                club.SetDivingInstructors(instructors);
                 divingClubs.Add(club);
             }
         }
@@ -545,7 +550,7 @@ namespace Systems_Analysis
 
             while (true)
             {
-                Console.WriteLine("\n\t \t \t \t \t****** Registration Section ******");
+                Console.WriteLine("\n\t \t \t \t \t****** LogIn Section ******");
                 Console.WriteLine("Enter your ID:");
                 id = Console.ReadLine();
 
@@ -766,10 +771,36 @@ namespace Systems_Analysis
             sb.Append("+------------------+---------------------+--------------------+--------------------------------------------------+\n");
             Console.WriteLine(sb.ToString());
         }
+        static void PrintMoreDiverInfo(Diver name)
+        {
+            Console.WriteLine("**************************");
+            Console.WriteLine(name.GetFirstName() + " " + name.GetLastName());
+            string str = "";
+            foreach (Dive dive in name.GetDiveLog())
+            {
+                str += dive;
+            }
+            Console.WriteLine(str);
+            str = "";
+            foreach (var rank in name.GetRanks())
+            {
+                str += $"Club: {rank.Key}  Rank: {rank.Value.GetDescription()}  Date: {rank.Value.GetDateReceived()}";
+            }
+            Console.WriteLine(str);
+            Console.WriteLine("**************************\n");
+        }
+        static void PrintMoreDivingClubInfo()
+        {
+            foreach (DivingClub item in divingClubs)
+            {
+                Console.WriteLine(item);
+                foreach (Dive dive in item.GetDiveLogs())
+                    Console.WriteLine("\n" + dive);
+            }
+        }
         static void UpdateRankMenu(Diver diver)
         {
-            //TODO
-            Console.WriteLine("1. Set New Rank in Current Club.\n2. Choose Another Club\n3. Exit");
+            Console.WriteLine("1. Set New Rank in Current Club\n2. Set New Rank in Another Club\n3. Exit");
             int choice;
             while (!int.TryParse(Console.ReadLine(), out choice))
             {
@@ -788,11 +819,6 @@ namespace Systems_Analysis
                 default:
                     break;
             }
-
-
-
-
-
         }
         static void UpdateRank(Diver diver)
         {
@@ -800,7 +826,7 @@ namespace Systems_Analysis
             {
                 currentDivingClub = ChooseClub();
             }
-            Console.WriteLine("Select your new Rank:\n1. One Star\n2. Two Stars\n3 .Instructor Assistant\n4. Instructor");
+            Console.WriteLine("Select your new Rank:\n1. One Star\n2. Two Stars\n3. Instructor Assistant\n4. Instructor");
             int choice;
             while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)
             {
@@ -808,6 +834,8 @@ namespace Systems_Analysis
             }
             Rank rank = new Rank(choice, currentDivingClub.GetName());
             diver.AddRank(rank);
+            Console.WriteLine("Rank updated");
+            SaveUsersToJson();
         }
         static void SecondScreen()
         {
@@ -821,6 +849,7 @@ namespace Systems_Analysis
                 {
                     secondMenu += "\n7. Show Dive History";
                 }
+                secondMenu += "\n\nFor Shai Using:\n8. PrintMoreDiverInfo(connectedUser)\n 9. PrintMoreDivingClubInfo();";
                 Console.WriteLine(secondMenu);
 
                 int choice;
@@ -865,6 +894,23 @@ namespace Systems_Analysis
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
+                    case 8:
+                        if (connectedUser == null)
+                        {
+                            Console.WriteLine("No User Connected");
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+                        }
+                        PrintMoreDiverInfo(connectedUser);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+                    case 9:
+                        PrintMoreDivingClubInfo();
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
                     default:
                         Console.WriteLine("Invalid Input, Try Again");
                         break;
@@ -878,6 +924,7 @@ namespace Systems_Analysis
             //Init
             users = new Dictionary<string, Diver>();
             LoadUsersFromJson();
+            SaveUsersToJson();
             CreateCountries();
             CreateDiveSites();
             CreateDivingClubs();

@@ -13,6 +13,7 @@ namespace Systems_Analysis
         private double perimeter;
         private double depth;
         private string waterType;
+        //properties for JSON file
 
         public int Code { get => code; private set => code = value; }
         public string Description { get => description; private set => description = value; }

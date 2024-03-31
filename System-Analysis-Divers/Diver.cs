@@ -13,8 +13,7 @@ namespace Systems_Analysis
         public string Password { get; private set; }
         public string Email { get; private set; }
         public List<Dive> DiveLog { get; set; }
-        //public List<EquipmentItem> Equipment { get; private set; }
-        public List<Rank> Ranks { get; set; }
+        public Dictionary<string, Rank> Ranks { get; set; }
 
         public Diver(string firstName, string lastName, string id, DateTime dateOfBirth, string password, string email)
         {
@@ -25,8 +24,7 @@ namespace Systems_Analysis
             SetPassword(password);
             SetEmail(email);
             DiveLog = new List<Dive>();
-            //Equipment = new List<EquipmentItem>();
-            Ranks = new List<Rank>();
+            Ranks = new Dictionary<string, Rank>();
         }
         public Diver CreateDiverCopy()
         {
@@ -36,16 +34,10 @@ namespace Systems_Analysis
             newDiver.DiveLog = DiveLog;
             newDiver.Ranks = Ranks;
 
-
-            //foreach (EquipmentItem item in Equipment)
-            //{
-            //    newDiver.Equipment.Add(new EquipmentItem(item)); // Assuming EquipmentItem has a copy constructor
-            //}
-
             return newDiver;
         }
         private void SetFirstName(string firstName) { FirstName = firstName; }
-        public void SetLastName(string lastName) { LastName = lastName; }//Private
+        private void SetLastName(string lastName) { LastName = lastName; }
         private void SetID(string id) { Id = id; }
         private void SetDateOfBirth(DateTime dateOfBirth) { DateOfBirth = dateOfBirth; }
         private void SetPassword(string password) { Password = password; }
@@ -62,19 +54,25 @@ namespace Systems_Analysis
         public void SetDiveLog(List<Dive> diveLog) { DiveLog = diveLog; }
         public void AddDiveToLog(Dive dive) { DiveLog.Add(dive); }
 
-        //public List<EquipmentItem> GetEquipment() { return Equipment; }
-        //public void SetEquipment(List<EquipmentItem> equipment) { Equipment = equipment; }
-
-        public List<Rank> GetRanks() { return Ranks; }
-        public void SetRanks(List<Rank> ranks) { Ranks = ranks; }
+        public Dictionary<string, Rank> GetRanks() { return Ranks; }
+        public void SetRanks(Dictionary<string, Rank> ranks) { Ranks = ranks; }
 
         public Signature SignDive()
         {
             string fullName = $"{FirstName} {LastName}";
             return new Signature(fullName, DateTime.Now);
         }
-        //public void AddEquipmentItem(EquipmentItem item) { Equipment.Add(item); }
-        public void AddRank(Rank rank) { Ranks.Add(rank); }
+        public void AddRank(Rank rank)
+        {
+            string club = rank.GetIssuingClub();
+            if (Ranks.ContainsKey(club))
+            {
+                Ranks[club] = rank;
+            }
+            else
+                Ranks.Add(rank.GetIssuingClub(), rank);
+
+        }
 
         public override string ToString()
         {
@@ -85,31 +83,19 @@ namespace Systems_Analysis
             sb.AppendLine($"ID: {Id}");
             sb.AppendLine($"Date of Birth: {DateOfBirth.ToShortDateString()}");
             sb.AppendLine($"Email: {Email}");
-            sb.AppendLine($"Rank: \n{RanksListToString(Ranks)}");
+            sb.AppendLine($"Rank: \n{RanksDictionaryToString(Ranks)}");
             sb.AppendLine("**************************************************");
             return sb.ToString();
         }
-        private string RanksListToString(List<Rank> ranks)
+        private string RanksDictionaryToString(Dictionary<string, Rank> ranks)
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Rank rank in ranks)
+            foreach (var rank in ranks)
             {
-                sb.AppendLine(rank.ToString());
-
+                sb.AppendLine(rank.Key + " - " + rank.Value.GetDescription());
             }
             return sb.ToString();
         }
-
-        //public string GetEquipmentToString()
-        //{
-        //    StringBuilder sb = new StringBuilder();
-
-        //    foreach (EquipmentItem item in Equipment)
-        //    {
-        //        sb.Append(item.ToString() + ", ");
-        //    }
-        //    return sb.ToString();
-        //}
     }
 }

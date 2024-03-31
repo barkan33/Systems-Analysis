@@ -766,7 +766,49 @@ namespace Systems_Analysis
             sb.Append("+------------------+---------------------+--------------------+--------------------------------------------------+\n");
             Console.WriteLine(sb.ToString());
         }
+        static void UpdateRankMenu(Diver diver)
+        {
+            //TODO
+            Console.WriteLine("1. Set New Rank in Current Club.\n2. Choose Another Club\n3. Exit");
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            switch (choice)
+            {
+                case 1:
+                    UpdateRank(diver);
+                    break;
+                case 2:
+                    currentDivingClub = ChooseClub();
+                    UpdateRank(diver);
+                    break;
+                case 3:
+                default:
+                    break;
+            }
 
+
+
+
+
+        }
+        static void UpdateRank(Diver diver)
+        {
+            while (currentDivingClub == null)
+            {
+                currentDivingClub = ChooseClub();
+            }
+            Console.WriteLine("Select your new Rank:\n1. One Star\n2. Two Stars\n3 .Instructor Assistant\n4. Instructor");
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            Rank rank = new Rank(choice, currentDivingClub.GetName());
+            diver.AddRank(rank);
+        }
         static void SecondScreen()
         {
             while (true)
@@ -809,9 +851,7 @@ namespace Systems_Analysis
                         connectedUser = null;
                         return;
                     case 6:
-                        //TODO
-                        Rank rank = new Rank(2, currentDivingClub.GetName());
-                        connectedUser.AddRank(rank);
+                        UpdateRankMenu(connectedUser);
                         break;
                     case 7:
                         if (connectedUser == null || connectedUser.GetDiveLog().Count == 0)

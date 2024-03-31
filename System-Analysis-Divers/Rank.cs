@@ -17,7 +17,7 @@
                 case 0:
                     return "One Star";
                 case 1:
-                    return "Two Star";
+                    return "Two Stars";
                 case 2:
                     return "InstructorAssistant";
                 case 3:

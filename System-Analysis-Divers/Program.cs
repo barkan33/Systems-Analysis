@@ -849,7 +849,7 @@ namespace Systems_Analysis
                 {
                     secondMenu += "\n7. Show Dive History";
                 }
-                secondMenu += "\n\nFor Shai Using:\n8. PrintMoreDiverInfo(connectedUser)\n 9. PrintMoreDivingClubInfo();";
+                secondMenu += "\n\nFor Shai Using:\n8. PrintMoreDiverInfo(connectedUser)\n9. PrintMoreDivingClubInfo();";
                 Console.WriteLine(secondMenu);
 
                 int choice;

@@ -12,7 +12,6 @@ namespace Systems_Analysis
         private string phone;
         private string email;
         private string website;
-        private Signature signature;
         private List<DivingInstructor> instructors;
         private List<DiveSite> diveSites;
         private List<Dive> diveLog;
@@ -39,15 +38,13 @@ namespace Systems_Analysis
         private void SetPhone(string phone) { this.phone = phone; }
         private void SetEmail(string email) { this.email = email; }
         private void SetWebsite(string website) { this.website = website; }
-        private void AddDivingInstructors(DivingInstructor instructor) { instructors.Add(instructor); }
         public void SetDivingInstructors(List<DivingInstructor> instructors) { this.instructors = instructors; }
+        public void SetDivingSites(List<DiveSite> diveSites) { this.diveSites = diveSites; }
+
+        private void AddDivingInstructors(DivingInstructor instructor) { instructors.Add(instructor); }
         private void AddDiveSites(DiveSite diveSite) { diveSites.Add(diveSite); }
         public void AddDive(Dive log) { diveLog.Add(log); }
 
-        public void SetDivingSites(List<DiveSite> diveSites)
-        {
-            this.diveSites = diveSites;
-        }
 
 
         public DivingClub(string name, string licenseNumber, string contactPerson, string address, Country country, string phone, string email, string website, List<DiveSite> diveSites)
@@ -58,8 +55,8 @@ namespace Systems_Analysis
             SetAddress(address);
             SetCountry(country);
             SetPhone(phone);
-            SetEmail(email);
-            SetWebsite(website);
+            SetEmail(email.Replace(" ", ""));
+            SetWebsite(website.Replace(" ", ""));
             instructors = new List<DivingInstructor>();
             SetDivingSites(diveSites);
             diveLog = new List<Dive>();

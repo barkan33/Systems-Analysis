@@ -1,60 +1,29 @@
-@startuml
-actor User
-actor Staff
+@startuml Smart Ordering System - Use Case Diagram
 
+actor Staff
 actor Customer
 actor Waiter
 actor Chef
 actor Admin
-'left to right direction
+left to right direction
 
 
-Staff -- (viewOrders)
-Staff -- (manageOrders)
+Staff -- (View Orders)
+Staff -- (Manage Orders)
 
-User -- (LogIn)
-User -- (LogOut)
+Waiter -- (Clean Table)
 
-
-Waiter -- (View Orders)
-Waiter -- (Manage Orders)
-Waiter -- (Receive Notifications)
-
-
-Chef -- (View Orders)
 Chef -- (Prepare Food)
 Chef -- (Update Order Status)
 
 Admin -- (Configure System)
-Admin -- (Manage Users)
-Admin -- (Generate Reports)
-
 
 Waiter -|> Staff
 Chef -|> Staff
-Admin -|> Staff
-Staff -|> User
-
 
 Customer -- (Browse Menu)
 Customer -- (Select Table)
 Customer -- (Order Food)
 Customer -- (Pay)
-Customer -- (Receive Confirmation)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @enduml

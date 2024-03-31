@@ -163,10 +163,13 @@ namespace Systems_Analysis
                 List<DiveSite> sites = new List<DiveSite>();
                 sites.Add(diveSites[i + 1]);
                 sites.Add(diveSites[i + 2]);
-                DivingClub club = new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i], addresses[i], countries[random.Next(countries.Count)], phoneNumbers[i], $"{names[i].Trim()}@nomail.com", $"{names[i].Trim()}.com", sites);
+                DivingClub club = new DivingClub(names[i], random.Next(123456, 987654).ToString(), contactPersons[i], addresses[i], countries[random.Next(countries.Count)], phoneNumbers[i], $"{names[i].Replace(" ", "")}@nomail.com", $"{names[i].Replace(" ", "")}.com", sites);
                 List<DivingInstructor> instructors = CreateDivingInstructors();
                 foreach (DivingInstructor instructor in instructors)
+                {
                     instructor.AddRank(new Rank(4, club.GetName()));
+                    instructor.AddEmployments(club, DateTime.Now, DateTime.Now + TimeSpan.FromDays(365));
+                }
 
                 club.SetDivingInstructors(instructors);
                 divingClubs.Add(club);

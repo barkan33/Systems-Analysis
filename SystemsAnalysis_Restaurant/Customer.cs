@@ -23,7 +23,6 @@ namespace SystemsAnalysis_Restaurant
 
         }
 
-
         public static List<Dish> DishSelection()
         {
 
@@ -63,7 +62,6 @@ namespace SystemsAnalysis_Restaurant
             return orderedDishes;
         }
 
-
         public static void OrderConfirmation(Table selectedTable, List<Dish> orderedDishes)
         {
             // Order confirmation
@@ -102,7 +100,6 @@ namespace SystemsAnalysis_Restaurant
                 Program.Main();
             }
         }
-
 
         public static void CardPay()
         {

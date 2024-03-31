@@ -47,17 +47,6 @@
         {
             Description = description;
         }
-
-        //public int GetRequiredDives()
-        //{
-        //    return RequiredDives;
-        //}
-
-        //public void SetRequiredDives(int requiredDives)
-        //{
-        //    RequiredDives = requiredDives;
-        //}
-
         public DateTime GetDateReceived()
         {
             return DateReceived;

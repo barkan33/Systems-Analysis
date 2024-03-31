@@ -8,7 +8,7 @@ namespace Systems_Analysis
 {
     public class EmploymentRecord
     {
-        private DivingClub club;
+        private string clubName;
         private DateTime startDate;
         private DateTime endDate;
         public EmploymentRecord(DivingClub club, DateTime startDate, DateTime endDate)
@@ -17,14 +17,14 @@ namespace Systems_Analysis
             SetStartDate(startDate);
             SetEndDate(endDate);
         }
-        public DivingClub GetClub()
+        public string GetClub()
         {
-            return club;
+            return clubName;
         }
 
         public void SetClub(DivingClub club)
         {
-            this.club = club;
+            clubName = club.GetName();
         }
 
         public DateTime GetStartDate()

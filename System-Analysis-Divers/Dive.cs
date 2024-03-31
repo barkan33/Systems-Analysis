@@ -12,8 +12,8 @@ namespace Systems_Analysis
         public TimeOnly ExitTime { get; set; }
         public double WaterTemperature { get; set; }
         public string WaterCondition { get; set; }
-        public Dictionary<string, List<EquipmentItem>> ParticipantsAndEquipment { get; set; }
         public string Instructor { get; set; }
+        public Dictionary<string, List<EquipmentItem>> ParticipantsAndEquipment { get; set; }
         public Signature ClubSignature { get; set; }
         public List<Signature> Signatures { get; set; }
 

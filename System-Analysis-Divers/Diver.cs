@@ -42,20 +42,20 @@ namespace Systems_Analysis
         private void SetDateOfBirth(DateTime dateOfBirth) { DateOfBirth = dateOfBirth; }
         private void SetPassword(string password) { Password = password; }
         private void SetEmail(string email) { Email = email; }
+        public void SetDiveLog(List<Dive> diveLog) { DiveLog = diveLog; }
+        public void SetRanks(Dictionary<string, Rank> ranks) { Ranks = ranks; }
         public string GetLastName() { return LastName; }
         public string GetFirstName() { return FirstName; }
         public string GetID() { return Id; }
         public DateTime GetDateOfBirth() { return DateOfBirth; }
         public string GetPassword() { return Password; }
         public string GetEmail() { return Email; }
-
-
         public List<Dive> GetDiveLog() { return DiveLog; }
-        public void SetDiveLog(List<Dive> diveLog) { DiveLog = diveLog; }
+        public Dictionary<string, Rank> GetRanks() { return Ranks; }
+
         public void AddDiveToLog(Dive dive) { DiveLog.Add(dive); }
 
-        public Dictionary<string, Rank> GetRanks() { return Ranks; }
-        public void SetRanks(Dictionary<string, Rank> ranks) { Ranks = ranks; }
+
 
         public Signature SignDive()
         {

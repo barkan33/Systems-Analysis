@@ -1,10 +1,4 @@
-@startuml
-class User {
-    - username
-    - password
-    + login()
-    + logout()
-}
+@startuml Smart Ordering System - Class Diagram
 
 class Customer {
     + browseMenu()
@@ -13,13 +7,13 @@ class Customer {
     + pay()
 }
 
-class Staff extends User {
+class Staff{
     + viewOrders()
     + manageOrders()
 }
 
 class Waiter extends Staff {
-    + receiveNotifications()
+    + CleanTable()
 }
 
 class Chef extends Staff {
@@ -27,15 +21,15 @@ class Chef extends Staff {
     + updateOrderStatus()
 }
 
-class Admin extends User {
-    + configureSystem()
-    + manageUsers()
-    + generateReports()
+class Admin {
+    + Login()
+    + UpdateSomethingInDB()
 }
 
 class Menu {
     - dishes : List<Dish>
-    + getDishDetails(dishId) : Dish
+    + GetDishById(dishId) : Dish
+    + PrintMenu()
 }
 
 class Dish {
@@ -46,25 +40,23 @@ class Dish {
 }
 
 class Order {
-    - customer : Customer
     - dishes : List<Dish>
-    - table : Table
-    - status
+    - table : int
+    - status : OrderStatus
     + addDish(dish)
     + removeDish(dish)
     + updateStatus(status)
 }
 
 class Table {
-    - id
-    - capacity
-    - status
+    - id : int
+    - capacity : int
+    - isOccupied : bool
+    - order : Order
 }
 
-
-
-Order *-- Customer
 Order *-- Dish
-Order *-- Table
 Menu *-- Dish
+Table *-- Order
+
 @enduml

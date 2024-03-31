@@ -7,29 +7,24 @@ class Diver {
     #dateOfBirth : Date
     #email : String
     #password : String
-    #log : DiveLog
-    #equipment : List<EquipmentItem>
-    #ranks : List<Rank>
-    +signDive(DiverName : string)
-    +addEquipmentItem(item : EquipmentItem)
-    +addRank(rank : Rank)
-}
+    #diveLog : List<Dive>
+    #ranks : Dictionary<string, Rank>
 
-' class DiveLog {
-'     -dives : List<Dive>
-'     +addDive(dive : Dive)
-'     +uploadLogImage(image : File)
-' }
+    +AddDiveToLog(dive : Dive)
+    +AddRank(rank : Rank)
+    +SignDive()
+}
 
 class Dive {
     -diveSite : DiveSite
+    -divingClubName : string
     -date : Date
     -entryTime : Time
     -exitTime : Time
     -waterTemperature : Float
     -waterCondition : String
-    -participants : List<Diver>
     -instructor : DivingInstructor
+    -ParticipantsAndEquipment : Dictionary<string, List<EquipmentItem>>
     -clubSignature : Signature
     +signatures : List<Signature>
     +addParticipant(diver : Diver)
@@ -37,8 +32,7 @@ class Dive {
 }
 
 class DiveSite {
-    -name : String
-    -address : String
+    -code : int
     -description : String
     -perimeter : Float
     -depth : Float
@@ -46,12 +40,13 @@ class DiveSite {
 }
 
 class DivingInstructor extends Diver {
+    -age : int
     -employmentRecords : List<EmploymentRecord>
-    +documentDive(dive : Dive)
+    +AddEmployments(DivingClub: club, DateTime :startDate, DateTime: endDate)
 }
 
 class EmploymentRecord {
-    -club : DivingClub
+    -club : string
     -startDate : Date
     -endDate : Date
 }
@@ -67,55 +62,72 @@ class DivingClub {
     -website : String
     -divingInstructors : List<DivingInstructor>
     -diveSite : List<DiveSite>
-    -log : List<DiveLog>
-    +saveDive(dive : Dive)
+    -diveLog : List<Dive>
+    +AddDive(dive : Dive)
+    +AddDivingInstructors(DivingInstructor: instructor)
+    +AddDiveSites(DiveSite diveSite)
 }
 
 class Country {
-    +name : String
-    +divingRegulation : String
+    -name : String
+    -divingRegulation : String
 }
 
 class EquipmentItem {
-    +name : String
-    +quantity : Integer
-    +note : String
+    -name : String
+    -quantity : Integer
+    -note : String
 
 }
 class Signature {
-    +signer : String
-    +timestamp : DateTime
+    -signer : String
+    -timestamp : DateTime
 }
 
 class Rank {
-    +description : String
-    +requiredDives : Integer
-    +dateReceived : Date
-    +issuingClub : DivingClub
-    +certificateImage : File
+    -description : int
+    -divingClub : string
+    -dateReceived : Date
+    -certificateImage : File
 }
 
 
+DivingClub *-- Country
+DivingClub *-- DivingInstructor
+DivingClub *-- DiveSite
+DivingClub *-- Dive
+
 Dive *-- DiveSite
-Dive *- Diver
-Dive *- DivingInstructor
-Dive *- Signature
+Dive *-- DivingInstructor
+Dive *-- EquipmentItem
+Dive *-- Signature
+
+Diver *-- Dive
+Diver *-- Rank
 
 DivingInstructor *-- EmploymentRecord
 
-EmploymentRecord *-- DivingClub
 
-Rank *- DivingClub
+' Dive *-- DiveSite
+' Dive *- Diver
+' Dive *- DivingInstructor
+' Dive *- Signature
 
-Diver *- DiveLog
-Diver *- EquipmentItem
-Diver *- Rank
+' DivingInstructor *-- EmploymentRecord
 
-DiveLog *-- Dive
+' EmploymentRecord *-- DivingClub
 
-DivingClub *-- Country
-DivingClub *-- DivingInstructor
-DivingClub *- DiveSite
+' Rank *- DivingClub
+
+' Diver *- DiveLog
+' Diver *- EquipmentItem
+' Diver *- Rank
+
+' DiveLog *-- Dive
+
+' DivingClub *-- Country
+' DivingClub *-- DivingInstructor
+' DivingClub *- DiveSite
 
 
 @enduml

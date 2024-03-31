@@ -9,7 +9,7 @@ namespace SystemsAnalysis_Restaurant
     public class Order
     {
         private List<Dish> dishes;
-        private Table table;
+        private int table;
         private OrderStatus status;
 
         public enum OrderStatus
@@ -19,7 +19,7 @@ namespace SystemsAnalysis_Restaurant
             Ready // Order ready for serving
         }
 
-        public Order(List<Dish> dishes, Table table, OrderStatus status)
+        public Order(List<Dish> dishes, int table, OrderStatus status)
         {
             this.dishes = dishes;
             this.table = table;
@@ -31,7 +31,7 @@ namespace SystemsAnalysis_Restaurant
             this.dishes = dishes;
         }
 
-        public void SetTable(Table table)
+        public void SetTable(int table)
         {
             this.table = table;
         }
@@ -46,7 +46,7 @@ namespace SystemsAnalysis_Restaurant
             return dishes;
         }
 
-        public Table GetTable()
+        public int GetTable()
         {
             return table;
         }
@@ -70,8 +70,22 @@ namespace SystemsAnalysis_Restaurant
         {
             dishes.Add(dish);
         }
+        public double GetTotalPrice()
+        {
+            double price = 0;
+            foreach (Dish dish in dishes)
+                price += dish.GetDishPrice();
 
+            return price;
+        }
 
-
+        public override string ToString()
+        {
+            string str = "Table: " + table + "\nDishes: \n";
+            foreach (Dish dish in dishes)
+                str += dish.GetDishName() + "\n";
+            str += "Status: " + status;
+            return str;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SystemsAnalysis_Restaurant
@@ -65,6 +66,10 @@ namespace SystemsAnalysis_Restaurant
             stringBuilder.Append(new string('*', 40));
 
             return stringBuilder.ToString();
+        }
+        public string GetDetails()
+        {
+            return $"{GetDishName()} - ${GetDishPrice():F2}";
         }
 
     }

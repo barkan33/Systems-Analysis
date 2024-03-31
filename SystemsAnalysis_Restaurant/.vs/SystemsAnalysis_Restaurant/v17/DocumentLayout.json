@@ -1,50 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\",
+  "WorkspaceRootPath": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\sergb\\onedrive\\documents\\github\\securedevelopmentfinalproject\\systems-analysis\\systemsanalysis_restaurant\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\misha\\onedrive\\desktop\\html\\systems analysis\\systemsanalysis_restaurant\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\chef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\chef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:chef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\waiter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:waiter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\misha\\onedrive\\desktop\\html\\systems analysis\\systemsanalysis_restaurant\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\misha\\onedrive\\desktop\\html\\systems analysis\\systemsanalysis_restaurant\\waiter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:waiter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\misha\\onedrive\\desktop\\html\\systems analysis\\systemsanalysis_restaurant\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|c:\\users\\misha\\onedrive\\desktop\\html\\systems analysis\\systemsanalysis_restaurant\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3867267-41F1-4BD7-A8CF-99C5197C0CD8}|SystemsAnalysis_Restaurant.csproj|solutionrelative:admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,17 +46,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Order.cs",
+              "RelativeDocumentMoniker": "Order.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Order.cs",
+              "RelativeToolTip": "Order.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAA8wFMAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-31T09:26:42.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Table.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Table.cs",
+              "RelativeDocumentMoniker": "Table.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Table.cs",
+              "RelativeToolTip": "Table.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-31T09:37:13.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Waiter.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Waiter.cs",
+              "RelativeDocumentMoniker": "Waiter.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Waiter.cs",
+              "RelativeToolTip": "Waiter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-31T09:35:38.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Staff.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Staff.cs",
+              "RelativeDocumentMoniker": "Staff.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Staff.cs",
+              "RelativeToolTip": "Staff.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAqwCIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-31T09:22:33.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Program.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAADgv0MAAAAeAAAA",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAgwKcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-26T16:47:07.119Z",
               "EditorCaption": ""
@@ -72,78 +120,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Dish.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Dish.cs",
-              "RelativeDocumentMoniker": "Dish.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Dish.cs",
-              "RelativeToolTip": "Dish.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAywEUAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:51:04.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Table.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Table.cs",
-              "RelativeDocumentMoniker": "Table.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Table.cs",
-              "RelativeToolTip": "Table.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowEAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:51:27.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Order.cs",
-              "RelativeDocumentMoniker": "Order.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Order.cs",
-              "RelativeToolTip": "Order.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "",
-              "WhenOpened": "2024-03-26T16:51:15.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Menu.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Menu.cs",
-              "RelativeDocumentMoniker": "Menu.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Menu.cs",
-              "RelativeToolTip": "Menu.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:50:52.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Admin.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Admin.cs",
-              "RelativeDocumentMoniker": "Admin.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Admin.cs",
-              "RelativeToolTip": "Admin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:50:42.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Chef.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Chef.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Chef.cs",
               "RelativeDocumentMoniker": "Chef.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Chef.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Chef.cs",
               "RelativeToolTip": "Chef.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAWAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA1wBoAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-26T16:50:31.466Z",
               "EditorCaption": ""
@@ -151,38 +133,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Waiter.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Waiter.cs",
-              "RelativeDocumentMoniker": "Waiter.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Waiter.cs",
-              "RelativeToolTip": "Waiter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:50:18.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Staff.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Staff.cs",
-              "RelativeDocumentMoniker": "Staff.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Staff.cs",
-              "RelativeToolTip": "Staff.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:50:03.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Customer.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Customer.cs",
               "RelativeDocumentMoniker": "Customer.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\Customer.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Customer.cs",
               "RelativeToolTip": "Customer.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwAgAAAAEAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAowFIAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "OverriddenGroupName": "",
               "WhenOpened": "2024-03-26T16:49:51.552Z",
@@ -190,14 +146,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\User.cs",
-              "RelativeDocumentMoniker": "User.cs",
-              "ToolTip": "C:\\Users\\sergb\\OneDrive\\Documents\\GitHub\\SecureDevelopmentFinalProject\\Systems-Analysis\\SystemsAnalysis_Restaurant\\User.cs",
-              "RelativeToolTip": "User.cs",
+              "DocumentIndex": 5,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowEkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T16:49:38.004Z"
+              "WhenOpened": "2024-03-26T16:50:52.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Admin.cs",
+              "RelativeDocumentMoniker": "Admin.cs",
+              "ToolTip": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\Systems Analysis\\SystemsAnalysis_Restaurant\\Admin.cs",
+              "RelativeToolTip": "Admin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T16:50:42.748Z",
+              "EditorCaption": ""
             }
           ]
         }

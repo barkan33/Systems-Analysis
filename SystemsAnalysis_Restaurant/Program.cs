@@ -12,11 +12,11 @@ namespace SystemsAnalysis_Restaurant
         public static List<Table> GenerateTables(int tableAmount)
         {
             List<Table> tables = new List<Table>();
-
+            Random random = new Random();
             for (int i = 0; i < tableAmount; i++)
             {
                 int tableID = i + 1;
-                int tableCapacity = new Random().Next(2, 6);
+                int tableCapacity = random.Next(2, 6);
                 Table newTable = new Table(tableID, tableCapacity);
                 tables.Add(newTable);
             }
@@ -26,18 +26,25 @@ namespace SystemsAnalysis_Restaurant
         public static void Main()
         {
             Customer.orders = new List<Order>();
-
             tables = GenerateTables(10);
+
 
             while (true)
             {
 
                 //בחירת שולחן
+                Console.Clear();
                 Console.WriteLine("Available tables:");
                 // Display available tables
-                //TODO
+                foreach (Table item in tables)
+                {
+                    if (!item.IsOccupied())
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
 
-                int selectedTableNumber = 1;
+                int selectedTableNumber = 0;
                 Table selectedTable = null;
 
 
@@ -45,7 +52,7 @@ namespace SystemsAnalysis_Restaurant
                 {
                     Console.Write("Enter table number: ");
 
-                    while (!int.TryParse(Console.ReadLine(), out selectedTableNumber))
+                    while (!int.TryParse(Console.ReadLine(), out selectedTableNumber) || selectedTableNumber < 0 || selectedTableNumber > tables.Count)
                     {
                         Console.WriteLine("Invalid table selection. Please try again.");
                     }
@@ -59,24 +66,31 @@ namespace SystemsAnalysis_Restaurant
                         Console.WriteLine("Invalid table selection. Please try again.");
                     }
                 }
-                //Print Menu
-                //TODO
-                switch (selectedTableNumber)
-                {
-                    case 0:
-                        break;
-                        StuffFunction();
-                    case 1:
-                        selectedTable.SetIsOccupied(true);
-                        Customer.BrowseMenu();
-                        Customer.OrderConfirmation(selectedTable);
-                        Customer.Pay();
-                        Console.WriteLine("Thank you for your order!");
 
-                        break;
-                    default:
-                        Environment.Exit(0);
-                        break;
+
+                if (selectedTableNumber == 0)
+                {
+                    StuffFunction();
+                }
+                else
+                {
+                    selectedTable.SetIsOccupied(true);
+                    Customer.BrowseMenu();
+                    List<Dish> orderedDishes = Customer.DishSelection();
+                    Customer.OrderConfirmation(selectedTable, orderedDishes);
+                    Console.WriteLine("How Do you want to pay?\n1. Card\n2. Cash");
+                    int choice;
+                    while (!int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        Console.WriteLine("Invalid selection. Please try again.");
+                    }
+                    if (choice == 1)
+                    {
+                        Customer.CardPay();
+                    }
+                    Console.WriteLine("Thank you for your order!");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
                 }
             }
         }
@@ -84,114 +98,98 @@ namespace SystemsAnalysis_Restaurant
 
         public static void StuffFunction()
         {
-            Console.WriteLine("Menu:\r\n1. Admin\r\n2. Chef\r\n3. Waiter\r\n4. Exit");
-            //TODO
+            Console.WriteLine("Menu:\n1. Admin\n2. Chef\n3. Waiter\n4. Exit");
             int selectedProfession;
-            while (!int.TryParse(Console.ReadLine(), out selectedProfession) || selectedProfession > 2)
+            while (!int.TryParse(Console.ReadLine(), out selectedProfession) || selectedProfession < 1 || selectedProfession > 4)
             {
                 Console.WriteLine("Invalid Profession selection. Please try again.");
             }
             int choice = 0;
             switch (selectedProfession)
             {
-                case 0:
+                case 1:
                     Console.Write("Enter Username: ");
                     string user = Console.ReadLine();
                     Console.Write("Enter Password: ");
                     string pass = Console.ReadLine();
                     if (!Admin.Login(user, pass))
-                        return;
-                    Console.WriteLine("Admin Menu:\r\n1. Update Menu\r\n2. Exit");
+                        break;
+                    Console.WriteLine("Admin Menu:\n1. Update Menu\n2. Exit");
                     while (!int.TryParse(Console.ReadLine(), out choice))
                     {
-                        Console.WriteLine("Admin Menu:\r\n1. Update Menu\r\n2. Exit");
+                        Console.WriteLine("Admin Menu:\n1. Update Menu\n2. Exit");
                     }
                     switch (choice)
                     {
                         case 1:
-                            Admin.UpdateMenu(Customer.menu);
+                            Admin.UpdateSomethingInDB();
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
                             break;
                         case 2:
                         default:
                             break;
                     }
                     break;
-                case 1:
-                    Console.WriteLine("Chef Menu:\r\n1. View Orders and Prepare Food\r\n2. Exit");
+                case 2:
+                    Console.WriteLine("Chef Menu:\n1. View Orders and Prepare Food\n2. ManageOrders\n3. Exit");
                     while (!int.TryParse(Console.ReadLine(), out choice))
                     {
-                        Console.WriteLine("Chef Menu:\r\n1. View Orders and Prepare Food\r\n2. Exit");
+                        Console.WriteLine("Chef Menu:\n1. View Orders and Prepare Food\n2. Exit");
                     }
                     switch (choice)
                     {
                         case 1:
                             Chef.ViewOrders(Customer.orders);
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
                             break;
                         case 2:
-                        default:
-                            break;
-                    }
-
-                    break;
-                case 2:
-                    Console.WriteLine("Waiter Menu:\r\n1. View Orders and Status\r\n2. Serve Ready Orders\r\n3. Exit");
-                    while (!int.TryParse(Console.ReadLine(), out choice))
-                    {
-                        Console.WriteLine("Waiter Menu:\r\n1. View Orders and Status\r\n2. CleanTable\r\n3. Exit");
-                    }
-                    switch (choice)
-                    {
-                        case 1:
-                            Waiter.ViewOrders(Customer.orders);
-                            break;
-                        case 2:
-                            Waiter.CleanTable(Customer.orders);
+                            Chef.ManageOrders(Customer.orders);
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
                             break;
                         case 3:
                         default:
                             break;
                     }
+
                     break;
+                case 3:
+                    Console.WriteLine("Waiter Menu:\n1. View Orders and Status\n2. Serve Ready Orders\n3. ManageOrders\n4.Exit");
+                    while (!int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        Console.WriteLine("Waiter Menu:\n1. View Orders and Status\n2. CleanTable\n3. Exit");
+                    }
+                    switch (choice)
+                    {
+                        case 1:
+                            Waiter.ViewOrders(Customer.orders);
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+                        case 2:
+                            Waiter.CleanTable(tables);
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+                        case 3:
+                            Waiter.ManageOrders(Customer.orders);
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+                        case 4:
+                        default:
+                            break;
+                    }
+                    break;
+                case 4:
                 default:
                     Main();
                     break;
             }
         }
     }
-
-
-    ////צד מלצר
-    //{
-    //    while ()
-    //    {
-    //        //1. צפיה בהזמנות + סטטוס הזמנה
-    //        //2. הגשת האוכל המוכן
-    //        //3. exit
-    //    }
-    //}
-    //// צד טבח
-    //{
-    //    while ()
-    //    {
-
-    //        //1. צפיה בהזמנות + סטטוס הזמנה
-    //        //2. הכנת האוכל + עדכון סטטוס
-    //        //3. exit
-
-    //    }
-    //}
-    ////צד מנהל
-    //{
-    //    while ()
-    //    {
-    //        //1. הוספת מלצר
-    //        //2. הוספת טבח
-    //        //3. עדכון תפריט
-    //        //4. exit
-
-    //    }
-    //}
-
 }
 
 

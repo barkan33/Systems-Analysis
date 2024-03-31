@@ -10,7 +10,13 @@ namespace SystemsAnalysis_Restaurant
     public class Menu
     {
         private static List<Dish> dishes;
-
+        private static string[] dishNames = { "Spaghetti Carbonara", "Chicken Tikka Masala", "Margherita Pizza", "Caesar Salad", "Sushi Rolls", "Cheeseburger", "Pad Thai", "Fish and Chips", "Mushroom Risotto", "Tiramisu" };
+        private static string[] dishDescriptions = { "Classic Italian pasta dish with bacon and eggs", "Creamy Indian chicken curry with rice",
+                                                     "Traditional Italian pizza with tomato, mozzarella, and basil", "Fresh salad with romaine lettuce," +
+                                                     " and Caesar dressing", "Japanese rice rolls filled with fish,vegetables, and avocado", "Juicy beef patty with cheese," +
+                                                     " lettuce, and tomato in a bun", "Stir-fried rice noodles with shrimp, tofu, and peanuts",
+                                                     "Deep-fried battered fish served with fries", "Creamy rice dish cooked with mushrooms and parmesan cheese",
+                                                     "Layers of coffee-soaked ladyfingers and mascarpone cheese" };
         public Menu()
         {
             dishes = new List<Dish>();
@@ -20,14 +26,6 @@ namespace SystemsAnalysis_Restaurant
         {
             Random rand = new Random();
             dishes = new List<Dish>();
-
-            string[] dishNames = { "Spaghetti Carbonara", "Chicken Tikka Masala", "Margherita Pizza", "Caesar Salad", "Sushi Rolls", "Cheeseburger", "Pad Thai", "Fish and Chips", "Mushroom Risotto", "Tiramisu" };
-            string[] dishDescriptions = { "Classic Italian pasta dish with bacon and eggs", "Creamy Indian chicken curry with rice",
-                           "Traditional Italian pizza with tomato, mozzarella, and basil", "Fresh salad with romaine lettuce," +
-                                          " and Caesar dressing", "Japanese rice rolls filled with fish,vegetables, and avocado", "Juicy beef patty with cheese," +
-                                                         " lettuce, and tomato in a bun", "Stir-fried rice noodles with shrimp, tofu, and peanuts",
-                           "Deep-fried battered fish served with fries", "Creamy rice dish cooked with mushrooms and parmesan cheese",
-                           "Layers of coffee-soaked ladyfingers and mascarpone cheese" };
 
             for (int i = 0; i < dishNames.Length; i++)
             {
@@ -73,8 +71,6 @@ namespace SystemsAnalysis_Restaurant
             sb.Append("+-----------------------------------+----------------------------------------------------------------+---------------+\n");
             return sb.ToString();
         }
-
-
 
     }
 }

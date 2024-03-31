@@ -11,6 +11,7 @@ namespace SystemsAnalysis_Restaurant
         private int tableNumber;
         private int numberOfSeats;
         private bool isOccupied;
+        Order order;
 
         public Table(int tableNumber, int numberOfSeats)
         {
@@ -18,7 +19,8 @@ namespace SystemsAnalysis_Restaurant
             SetNumberOfSeats(numberOfSeats);
             isOccupied = false;
         }
-
+        public void SetOrder(Order order) { this.order = order; }
+        public Order GetOrder() { return order; }
         public int GetTableNumber()
         {
             return tableNumber;
@@ -61,6 +63,10 @@ namespace SystemsAnalysis_Restaurant
         public void SetIsOccupied(bool isOccupied)
         {
             this.isOccupied = isOccupied;
+        }
+        public override string ToString()
+        {
+            return $"Table Number: {tableNumber} - {numberOfSeats} Seats";
         }
     }
 }

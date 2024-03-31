@@ -13,13 +13,13 @@ namespace SystemsAnalysis_Restaurant
         private static string username = "password";
         private static string password = "username";
 
-        public static void UpdateMenu(Menu menu)
-        {
-            //TODO
-        }
         public static bool Login(string user, string pass)
         {
             return user == username && pass == password;
+        }
+        public static void UpdateSomethingInDB()
+        {
+            Console.WriteLine("DataBase Updated");
         }
     }
 }
